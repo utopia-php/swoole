@@ -11,8 +11,7 @@ class FilesTest extends TestCase
     {
         Files::load(__DIR__.'/../resources');
 
-        $this->assertGreaterThan(100, Files::getCount());
-        $this->assertLessThan(250, Files::getCount());
+        $this->assertEquals(11, Files::getCount());
         
         $this->assertEquals(false, Files::isFileLoaded('/index.php'));
         $this->assertEquals(false, Files::isFileLoaded('/unknown.jpg'));
