@@ -1,0 +1,25 @@
+{
+    "name": "utopia-php/swoole",
+    "description": "An extension for Utopia Framework to work with PHP Swoole as a PHP FPM alternative",
+    "type": "library",
+    "keywords": ["php", "framework", "upf", "utopia", "swoole", "http", "server"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eldad Fux",
+            "email": "team@appwrite.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Utopia\\Swoole\\": "src/Swoole"}
+    },
+    "require": {
+        "php": ">=7.1",
+        "utopia-php/framework": "0.*.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0",
+        "swoole/ide-helper": "4.5.2"
+    },
+    "minimum-stability": "dev"
+}
