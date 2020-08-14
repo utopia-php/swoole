@@ -6,7 +6,7 @@
 
 An extension for Utopia Framework to work with [PHP Swoole](https://github.com/swoole/swoole-src) as a PHP FPM alternative. This library is aiming to be as simple and easy to learn and use.
 
-This library is part of the [Utopia Framework](https://github.com/utopia-php/framework) project. You PHP should be compiled with the [PHP Swoole](https://github.com/swoole/swoole-src) extension for this library to work with Utopia PHP.
+This library is part of the [Utopia Framework](https://github.com/utopia-php/framework) project. Your PHP installation should be compiled with the [PHP Swoole](https://github.com/swoole/swoole-src) extension for this library to work with Utopia PHP.
 
 ## Getting Started
 
