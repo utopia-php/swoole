@@ -1,6 +1,6 @@
 # Utopia Swoole
 
-[![Build Status](https://travis-ci.org/utopia-php/swoole.svg?branch=master)](https://travis-ci.com/utopia-php/preloader)
+[![Build Status](https://travis-ci.org/utopia-php/swoole.svg?branch=master)](https://travis-ci.com/utopia-php/swoole)
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord)](https://appwrite.io/discord)
 ![Total Downloads](https://img.shields.io/packagist/dt/utopia-php/swoole.svg)
 
