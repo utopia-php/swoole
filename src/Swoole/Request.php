@@ -266,10 +266,10 @@ class Request extends UtopiaRequest
      * Method for querying HTTP cookie parameters. If $key is not found $default value will be returned.
      *
      * @param string $key
-     * @param mixed  $default
+     * @param string  $default
      * @return string
      */
-    public function getCookie(string $key, mixed $default = null): string
+    public function getCookie(string $key, string $default = ''): string
     {
         $key = strtolower($key);
         return (isset($this->swoole->cookie[$key])) ? $this->swoole->cookie[$key] : $default;
