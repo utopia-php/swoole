@@ -251,7 +251,7 @@ class Request extends UtopiaRequest
      *
      * Method for querying upload files data. If $key is not found empty array will be returned.
      *
-     * @param  string $key
+     * @param string $key
      * @return array
      */
     public function getFiles($key): array
@@ -265,9 +265,9 @@ class Request extends UtopiaRequest
      *
      * Method for querying HTTP cookie parameters. If $key is not found $default value will be returned.
      *
-     * @param  string $key
-     * @param  string  $default
-     * @return mixed
+     * @param string $key
+     * @param string  $default
+     * @return string
      */
     public function getCookie(string $key, string $default = ''): string
     {
