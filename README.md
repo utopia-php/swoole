@@ -1,10 +1,10 @@
 # Utopia Swoole
 
-[![Build Status](https://travis-ci.org/utopia-php/swoole.svg?branch=master)](https://travis-ci.org/utopia-php/preloader)
-[![Discord](https://badgen.net/badge/discord/chat/green)](https://discord.gg/GSeTUeA)
+[![Build Status](https://travis-ci.org/utopia-php/swoole.svg?branch=master)](https://travis-ci.com/utopia-php/preloader)
+[![Discord](https://img.shields.io/discord/564160730845151244?label=discord)](https://appwrite.io/discord)
 ![Total Downloads](https://img.shields.io/packagist/dt/utopia-php/swoole.svg)
 
-An extension for Utopia Framework to work with [PHP Swoole](https://github.com/swoole/swoole-src) as a PHP FPM alternative. This library is aiming to be as simple and easy to learn and use.
+An extension for Utopia Framework to work with [PHP Swoole](https://github.com/swoole/swoole-src) as a PHP FPM alternative. This library is aiming to be as simple and easy to learn and use. This library is maintained by the [Appwrite team](https://appwrite.io).
 
 This library is part of the [Utopia Framework](https://github.com/utopia-php/framework) project. Your PHP installation should be compiled with the [PHP Swoole](https://github.com/swoole/swoole-src) extension for this library to work with Utopia PHP.
 
@@ -66,7 +66,7 @@ $http->start();
 
 ## System Requirements
 
-Utopia Framework requires PHP 7.1 or later. We recommend using the latest PHP version whenever possible.
+Utopia Framework requires PHP 7.3 or later. We recommend using the latest PHP version whenever possible.
 
 ## Authors
 

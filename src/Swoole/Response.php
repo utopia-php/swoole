@@ -12,7 +12,7 @@ class Response extends UtopiaResponse
      * 
      * @var SwooleResponse
      */
-    protected $swoole = null;
+    protected $swoole;
 
     /**
      * Mime Types
@@ -55,7 +55,7 @@ class Response extends UtopiaResponse
     public function send(string $body = '', int $exit = null): void
     {
         if(!$this->disablePayload) {
-            $this->addHeader('X-Debug-Speed', microtime(true) - $this->startTime);
+            $this->addHeader('X-Debug-Speed', (string)(microtime(true) - $this->startTime));
 
             $this
                 ->appendCookies()
