@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/564160730845151244?label=discord)](https://appwrite.io/discord)
 ![Total Downloads](https://img.shields.io/packagist/dt/utopia-php/swoole.svg)
 
-An extension for Utopia Framework to work with [PHP Swoole](https://github.com/swoole/swoole-src) as a PHP FPM alternative. This library is aiming to be as simple and easy to learn and use. This library is maintained by the [Appwrite team](https://appwrite.io).
+An extension for Utopia Framework to work with [PHP Swoole](https://github.com/swoole/swoole-src) as a PHP FPM alternative. This library extends the default Utopia Request & Response classes with ones that can interact with the Swoole server. This library is aiming to be as simple and easy to learn and use. This library is maintained by the [Appwrite team](https://appwrite.io).
 
 This library is part of the [Utopia Framework](https://github.com/utopia-php/framework) project. Your PHP installation should be compiled with the [PHP Swoole](https://github.com/swoole/swoole-src) extension for this library to work with Utopia PHP.
 
