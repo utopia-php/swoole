@@ -127,7 +127,8 @@ class Request extends UtopiaRequest
      */
     public function getIP(): string
     {
-        return trim(explode(',',$this->getHeader('x-forwarded-for', $this->getServer('remote_addr', '0.0.0.0')))[0]);
+        $ips = explode(',',$this->getHeader('x-forwarded-for', $this->getServer('remote_addr', '0.0.0.0')));
+        return trim($ips[0] ?? '');
     }
 
     /**
