@@ -54,13 +54,14 @@ class Response extends UtopiaResponse
      */
     public function send(string $body = '', int $exit = null): void
     {
-        if(!$this->disablePayload) {
-            $this->addHeader('X-Debug-Speed', (string)(microtime(true) - $this->startTime));
+        $this->addHeader('X-Debug-Speed', (string)(microtime(true) - $this->startTime));
 
-            $this
-                ->appendCookies()
-                ->appendHeaders()
-            ;
+        $this
+            ->appendCookies()
+            ->appendHeaders()
+        ;
+        
+        if(!$this->disablePayload) {
 
             $chunk = 2000000; // Max chunk of 2 mb
             $length = strlen($body);
@@ -82,6 +83,9 @@ class Response extends UtopiaResponse
             }
 
             $this->disablePayload();
+        }
+        else {
+            $this->swoole->end();
         }
     }
 
