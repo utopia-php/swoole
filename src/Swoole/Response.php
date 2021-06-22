@@ -82,7 +82,7 @@ class Response extends UtopiaResponse
             }
             else {
                 for ($i=0; $i < ceil($length / $chunk); $i++) {
-                    $this->swoole->write(substr($body, ($i * $chunk), min((($i * $chunk) + $chunk), $length)));
+                    $this->swoole->write(substr($body, ($i * $chunk), min($chunk, $length - ($i * $chunk))));
                 }
 
                 $this->swoole->end();
