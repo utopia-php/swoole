@@ -17,7 +17,6 @@ before_install:
     echo "${DOCKERHUB_PULL_PASSWORD}" | docker login --username "${DOCKERHUB_PULL_USERNAME}" --password-stdin
   fi
 - docker --version
-- chmod -R u+x ./.travis-ci
 - export COMPOSE_INTERACTIVE_NO_CLI=1
     
 install:
