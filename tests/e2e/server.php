@@ -1,17 +1,16 @@
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
 use Swoole\Http\Server;
 use Swoole\Process;
 use Utopia\App;
-use Utopia\Swoole\Files;
 use Utopia\Swoole\Request;
 use Utopia\Swoole\Response;
 
-ini_set('memory_limit', '128M');
+ini_set('memory_limit', '512M');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 ini_set('display_socket_timeout', -1);
@@ -24,12 +23,11 @@ $payloadSize = max(4000000/* 4mb */, App::getEnv('_APP_STORAGE_LIMIT', 10000000/
 $http
     ->set([
         'open_http2_protocol' => true,
-        // 'document_root' => __DIR__.'/../public',
-        // 'enable_static_handler' => true,
         'http_compression' => true,
         'http_compression_level' => 6,
         'package_max_length' => $payloadSize,
         'buffer_output_size' => $payloadSize,
+        'worker_num' => 1,
     ])
 ;
 
@@ -45,7 +43,7 @@ $http->on('AfterReload', function ($serv, $workerId) {
     echo 'Reload completed...';
 });
 
-$http->on('start', function (Server $http) use ($payloadSize, $register) {
+$http->on('start', function (Server $http) use ($payloadSize) {
     echo 'Server started succefully (max payload is ' . number_format($payloadSize) . ' bytes)';
 
     echo "Master pid {$http->master_pid}, manager pid {$http->manager_pid}";
@@ -57,11 +55,28 @@ $http->on('start', function (Server $http) use ($payloadSize, $register) {
     });
 });
 
+App::get('/')
+    ->inject('response')
+    ->action(function ($response) {
+        var_dump($response);
+        $response->send('Hello World!');
+    });
+
+App::get('/chunked')
+    ->inject('response')
+    ->action(function ($response) {
+        /** @var Utopia/Swoole/Response $response */
+        foreach (["Hello ", "World!"] as $key => $word) {
+            $response->chunk($word, $key == 1);
+        }
+    });
+
 $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swooleResponse) {
     $request = new Request($swooleRequest);
     $response = new Response($swooleResponse);
 
     $app = new App('UTC');
+    // var_dump($request);
 
     try {
         $app->run($request, $response);
@@ -80,18 +95,3 @@ $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swo
 });
 
 $http->start();
-
-App::get('/')
-    ->inject('response')
-    ->action(function ($response) {
-        $response->send('Hello World');
-    });
-
-App::get('/chunked')
-    ->inject('response')
-    ->action(function ($response) {
-        /** @var Utopia/Swoole/Response $response */
-        foreach( ["Hello", "World"] as $key => $word) {
-            $response->chunk($word, $key == 1);
-        }
-    });

@@ -9,8 +9,12 @@
          stopOnFailure="false"
         >
     <testsuites>
-        <testsuite name="Application Test Suite">
-            <directory>./tests/</directory>
+        <testsuite name="unit">
+            <directory>./tests/Swoole/</directory>
+        </testsuite>
+        <testsuite name="e2e">
+            <file>./tests/e2e/Client.php</file>
+            <directory>./tests/e2e/Swoole/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

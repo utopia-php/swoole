@@ -8,7 +8,7 @@ COPY ./composer.lock /src/
 RUN composer update --ignore-platform-reqs --optimize-autoloader \
     --no-plugins --no-scripts --prefer-dist
 
-FROM php:8.0-cli-alpine as setp1
+FROM php:8.0-cli-alpine as step1
 
 ENV PHP_SWOOLE_VERSION=v4.6.6
 
@@ -46,11 +46,13 @@ RUN \
 
 WORKDIR /code
 
-COPY --from=step0 /usr/local/src/vendor /usr/src/code/vendor
-COPY --from=step1 /usr/local/lib/php/extensions/no-debug-non-zts-20200930/swoole.so /usr/local/lib/php/extensions/no-debug-non-zts-20200930/yasd.so* /usr/local/lib/php/extensions/no-debug-non-zts-20200930/ 
+COPY --from=step0 /src/vendor /code/vendor
+COPY --from=step1 /usr/local/lib/php/extensions/no-debug-non-zts-20200930/swoole.so /usr/local/lib/php/extensions/no-debug-non-zts-20200930/ 
 
 # Add Source Code
-COPY ./src /code/
+COPY ./src /code/src
+COPY ./phpunit.xml /code/
+COPY ./psalm.xml /code/
 
 
 # Enable Extensions
