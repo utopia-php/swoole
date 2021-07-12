@@ -58,7 +58,6 @@ $http->on('start', function (Server $http) use ($payloadSize) {
 App::get('/')
     ->inject('response')
     ->action(function ($response) {
-        var_dump($response);
         $response->send('Hello World!');
     });
 
@@ -76,7 +75,6 @@ $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swo
     $response = new Response($swooleResponse);
 
     $app = new App('UTC');
-    // var_dump($request);
 
     try {
         $app->run($request, $response);
