@@ -1,20 +1,30 @@
-language: php
+dist: xenial
 
-php:
-- 7.4
-- 8.0
-- nightly
+os: linux
 
 notifications:
   email:
   - team@appwrite.io
 
-install:
-    - wget https://github.com/swoole/swoole-src/archive/v4.5.11.tar.gz -O swoole.tar.gz && mkdir -p swoole && tar -xf swoole.tar.gz -C swoole --strip-components=1 && rm swoole.tar.gz && cd swoole && phpize && ./configure && make -j$(nproc) && make install && cd -
-    - echo "extension = swoole.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+before_install:
+- curl -fsSL https://get.docker.com | sh
+- echo '{"experimental":"enabled"}' | sudo tee /etc/docker/daemon.json
+- mkdir -p $HOME/.docker
+- echo '{"experimental":"enabled"}' | sudo tee $HOME/.docker/config.json
+- sudo service docker start
+- >
+  if [ ! -z "${DOCKERHUB_PULL_USERNAME:-}" ]; then
+    echo "${DOCKERHUB_PULL_PASSWORD}" | docker login --username "${DOCKERHUB_PULL_USERNAME}" --password-stdin
+  fi
+- docker --version
+- chmod -R u+x ./.travis-ci
+- export COMPOSE_INTERACTIVE_NO_CLI=1
     
-before_script: composer install --ignore-platform-reqs
+install:
+- docker-compose up -d
+- sleep 10
 
 script:
-- vendor/bin/phpunit --configuration phpunit.xml
-- vendor/bin/psalm --show-info=true
+- docker ps -a
+- docker-compose exec php vendor/bin/phpunit --debug
+- docker-compose exec php vendor/bin/psalm
