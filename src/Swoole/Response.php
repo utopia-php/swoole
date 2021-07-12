@@ -96,6 +96,46 @@ class Response extends UtopiaResponse
     }
 
     /**
+     * Output response
+     *
+     * Generate HTTP response output including the response header (+cookies) and body and prints them.
+     *
+     * @param string $body
+     * @param bool $last
+     *
+     * @return void
+     */
+    public function chunk(string $body = '', bool $last = false): void
+    {
+        if ($this->sent) {
+            return;
+        }
+
+        if ($last) {
+            $this->sent = true;
+        }
+
+        $this->addHeader('X-Debug-Speed', (string) (microtime(true) - $this->startTime));
+
+        $this
+            ->appendCookies()
+            ->appendHeaders()
+        ;
+
+        if (!$this->disablePayload) {
+
+            $this->swoole->write($body);
+            if ($last) {
+                $this->disablePayload();
+                $this->swoole->end();
+            }
+
+        } else {
+            $this->swoole->end();
+        }
+    }
+
+    /**
      * Append headers
      *
      * Iterating over response headers to generate them using native PHP header function.
