@@ -13,25 +13,6 @@ class Response extends UtopiaResponse
      * @var SwooleResponse
      */
     protected $swoole;
-
-    /**
-     * Mime Types
-     *  with compression support
-     * 
-     * @var array
-     */
-    protected $compressed = [
-        'text/plain' => true,
-        'text/css' => true,
-        'text/javascript' => true,
-        'application/javascript' => true,
-        'text/html' => true,
-        'text/html; charset=UTF-8' => true,
-        'application/json' => true,
-        'application/json; charset=UTF-8' => true,
-        'image/svg+xml' => true,
-        'application/xml+rss' => true,
-    ];
     
     /**
      * Response constructor.
@@ -42,122 +23,19 @@ class Response extends UtopiaResponse
         parent::__construct(\microtime(true));
     }
 
-    /**
-     * Output response
-     *
-     * Generate HTTP response output including the response header (+cookies) and body and prints them.
-     *
-     * @param string $body
-     * @param int $exit exit code or don't exit if code is null
-     *
-     * @return void
-     */
-    public function send(string $body = '', int $exit = null): void
+    protected function write($content)
     {
-        if($this->sent) {
-            return;
-        }
-
-        $this->sent = true;
-        
-        $this->addHeader('X-Debug-Speed', (string)(microtime(true) - $this->startTime));
-
-        $this
-            ->appendCookies()
-            ->appendHeaders()
-        ;
-        
-        if(!$this->disablePayload) {
-
-            $chunk = 2000000; // Max chunk of 2 mb
-            $length = strlen($body);
-
-            $this->size = $this->size + strlen(implode("\n", $this->headers)) + $length;
-
-            if(array_key_exists(
-                $this->contentType,
-                $this->compressed
-                ) && ($length <= $chunk)) { // Dont compress with GZIP / Brotli if header is not listed and size is bigger than 2mb
-                $this->swoole->end($body);
-            }
-            else {
-                for ($i=0; $i < ceil($length / $chunk); $i++) {
-                    $this->swoole->write(substr($body, ($i * $chunk), min($chunk, $length - ($i * $chunk))));
-                }
-
-                $this->swoole->end();
-            }
-
-            $this->disablePayload();
-        }
-        else {
-            $this->swoole->end();
-        }
+        $this->swoole->write($content);
     }
 
-    /**
-     * Output response
-     *
-     * Generate HTTP response output including the response header (+cookies) and body and prints them.
-     *
-     * @param string $body
-     * @param bool $last
-     *
-     * @return void
-     */
-    public function chunk(string $body = '', bool $end = false): void
+    protected function end($content=null)
     {
-        if ($this->sent) {
-            return;
-        }
-
-        if ($last) {
-            $this->sent = true;
-        }
-
-        $this->addHeader('X-Debug-Speed', (string) (microtime(true) - $this->startTime));
-
-        $this
-            ->appendCookies()
-            ->appendHeaders()
-        ;
-
-        if (!$this->disablePayload) {
-
-            $this->swoole->write($body);
-            if ($last) {
-                $this->disablePayload();
-                $this->swoole->end();
-            }
-
-        } else {
-            $this->swoole->end();
-        }
+        $this->swoole->end($content);
     }
 
-    /**
-     * Append headers
-     *
-     * Iterating over response headers to generate them using native PHP header function.
-     * This method is also responsible for generating the response and content type headers.
-     *
-     * @return self
-     */
-    protected function appendHeaders(): self
+    protected function sendHeader($key, $value): self
     {
-        // Send status code header
-        $this->swoole->status((string)$this->statusCode);
-
-        // Send content type header
-        $this
-            ->addHeader('Content-Type', $this->contentType)
-        ;
-
-        // Set application headers
-        foreach ($this->headers as $key => $value) {
-            $this->swoole->header($key, $value);
-        }
-
+        $this->swoole->header($key, $value);
         return $this;
     }
 
@@ -168,21 +46,18 @@ class Response extends UtopiaResponse
      *
      * @return self
      */
-    protected function appendCookies(): self
+    protected function sendCookie(array $cookie)
     {
-        foreach ($this->cookies as $cookie) {
-            $this->swoole->cookie(
-                $cookie['name'],
-                $cookie['value'],
-                $cookie['expire'],
-                $cookie['path'],
-                $cookie['domain'],
-                $cookie['secure'],
-                $cookie['httponly'],
-                $cookie['samesite'],
-            );
-        }
+        $this->swoole->cookie(
+            $cookie['name'],
+            $cookie['value'],
+            $cookie['expire'],
+            $cookie['path'],
+            $cookie['domain'],
+            $cookie['secure'],
+            $cookie['httponly'],
+            $cookie['samesite'],
+        );
 
-        return $this;
     }
 }

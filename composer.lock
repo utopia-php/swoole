@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lohanidamodar/framework",
-                "reference": "e1a286a51681b6d4259a5c6944ad07170acbee39"
+                "reference": "37551a2bb361aabfe4ad4f983f79288c6e175710"
             },
             "require": {
                 "php": ">=7.3.0"
@@ -42,7 +42,7 @@
                 "php",
                 "upf"
             ],
-            "time": "2021-07-18T08:22:03+00:00"
+            "time": "2021-07-18T09:00:44+00:00"
         }
     ],
     "packages-dev": [
