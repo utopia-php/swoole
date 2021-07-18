@@ -105,7 +105,7 @@ class Response extends UtopiaResponse
      *
      * @return void
      */
-    public function chunk(string $body = '', bool $last = false): void
+    public function chunk(string $body = '', bool $end = false): void
     {
         if ($this->sent) {
             return;
