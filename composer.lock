@@ -4,21 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "371085fe62711e258ce6b0290a9a5499",
+    "content-hash": "eb8c1f5cf8940ca084d8c7c8decc949c",
     "packages": [
         {
             "name": "utopia-php/framework",
-            "version": "0.16.0",
+            "version": "dev-feat-chunk-response",
             "source": {
                 "type": "git",
-                "url": "https://github.com/utopia-php/framework.git",
-                "reference": "e53db21af89e0eef0784fd153de762277da87295"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/framework/zipball/e53db21af89e0eef0784fd153de762277da87295",
-                "reference": "e53db21af89e0eef0784fd153de762277da87295",
-                "shasum": ""
+                "url": "https://github.com/lohanidamodar/framework",
+                "reference": "e1a286a51681b6d4259a5c6944ad07170acbee39"
             },
             "require": {
                 "php": ">=7.3.0"
@@ -33,7 +27,6 @@
                     "Utopia\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -49,11 +42,7 @@
                 "php",
                 "upf"
             ],
-            "support": {
-                "issues": "https://github.com/utopia-php/framework/issues",
-                "source": "https://github.com/utopia-php/framework/tree/0.16.0"
-            },
-            "time": "2021-07-15T08:45:09+00:00"
+            "time": "2021-07-18T08:22:03+00:00"
         }
     ],
     "packages-dev": [
@@ -63,12 +52,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/amphp/amp.git",
-                "reference": "7d4bbc6e0b47c6bb39b6cce1a4b5942e0c5125fb"
+                "reference": "59a8414f1652f1ec50ac10c813387dc4ef039fa0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amphp/amp/zipball/7d4bbc6e0b47c6bb39b6cce1a4b5942e0c5125fb",
-                "reference": "7d4bbc6e0b47c6bb39b6cce1a4b5942e0c5125fb",
+                "url": "https://api.github.com/repos/amphp/amp/zipball/59a8414f1652f1ec50ac10c813387dc4ef039fa0",
+                "reference": "59a8414f1652f1ec50ac10c813387dc4ef039fa0",
                 "shasum": ""
             },
             "require": {
@@ -145,7 +134,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-13T19:16:50+00:00"
+            "time": "2021-07-16T20:25:09+00:00"
         },
         {
             "name": "amphp/byte-stream",
@@ -2739,12 +2728,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "3f1271fb58a5fe088a21c44bace07a59582c92c3"
+                "reference": "7615bb7bb55c1661440f18acc532531864661224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/3f1271fb58a5fe088a21c44bace07a59582c92c3",
-                "reference": "3f1271fb58a5fe088a21c44bace07a59582c92c3",
+                "url": "https://api.github.com/repos/symfony/console/zipball/7615bb7bb55c1661440f18acc532531864661224",
+                "reference": "7615bb7bb55c1661440f18acc532531864661224",
                 "shasum": ""
             },
             "require": {
@@ -2829,7 +2818,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-13T10:07:36+00:00"
+            "time": "2021-07-17T18:34:10+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3872,7 +3861,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "utopia-php/framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
