@@ -23,40 +23,65 @@ class Response extends UtopiaResponse
         parent::__construct(\microtime(true));
     }
 
-    protected function write($content)
+    /**
+     * Write
+     * 
+     * @param string $content
+     * 
+     * @return void
+     */
+    protected function write(string $content): void
     {
         $this->swoole->write($content);
     }
 
-    protected function end($content=null)
+    /**
+     * End
+     * 
+     * @param string $content
+     * 
+     * @return void
+     */
+    protected function end(string $content=null): void
     {
         $this->swoole->end($content);
     }
 
-    protected function sendHeader($key, $value): self
+    /**
+     * Send Header
+     * 
+     * @param string $key
+     * @param string $value
+     * 
+     * @return void
+     */
+    protected function sendHeader(string $key, string $value): void
     {
         $this->swoole->header($key, $value);
-        return $this;
     }
 
     /**
-     * Append cookies
+     * Send Cookie
      *
-     * Iterating over response cookies to generate them using native PHP cookie function.
+     * Send a cookie
+     * 
+     * @param string $name
+     * @param string $value
+     * @param array $options
      *
-     * @return self
+     * @return void
      */
-    protected function sendCookie(array $cookie)
+    protected function sendCookie(string $name, string $value, array $options): void
     {
         $this->swoole->cookie(
-            $cookie['name'],
-            $cookie['value'],
-            $cookie['expire'],
-            $cookie['path'],
-            $cookie['domain'],
-            $cookie['secure'],
-            $cookie['httponly'],
-            $cookie['samesite'],
+            $name,
+            $value,
+            $options['expire'],
+            $options['path'],
+            $options['domain'],
+            $options['secure'],
+            $options['httponly'],
+            $options['samesite'],
         );
 
     }
