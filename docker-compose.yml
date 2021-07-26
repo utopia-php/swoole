@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    php:
+        build:
+            context: .
+        ports:
+            - 80:80
+        volumes:
+            - ./tests:/code/tests
+            - ./src:/code/src
