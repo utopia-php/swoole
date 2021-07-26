@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb8c1f5cf8940ca084d8c7c8decc949c",
+    "content-hash": "371085fe62711e258ce6b0290a9a5499",
     "packages": [
         {
             "name": "utopia-php/framework",
-            "version": "dev-feat-chunk-response",
+            "version": "0.17.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lohanidamodar/framework",
-                "reference": "c979b5448f260131425704108f87c006965069cc"
+                "url": "https://github.com/utopia-php/framework.git",
+                "reference": "2952f6a21c2229f7a63ecb955bda676158174aec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/utopia-php/framework/zipball/2952f6a21c2229f7a63ecb955bda676158174aec",
+                "reference": "2952f6a21c2229f7a63ecb955bda676158174aec",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.3.0"
@@ -27,6 +33,7 @@
                     "Utopia\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -42,7 +49,11 @@
                 "php",
                 "upf"
             ],
-            "time": "2021-07-22T07:18:44+00:00"
+            "support": {
+                "issues": "https://github.com/utopia-php/framework/issues",
+                "source": "https://github.com/utopia-php/framework/tree/0.17.0"
+            },
+            "time": "2021-07-26T05:56:11+00:00"
         }
     ],
     "packages-dev": [
@@ -1089,12 +1100,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "6759f2268deb9f329812679e9dcb2d0083b2a30b"
+                "reference": "550e0fb7efa2f7a361d47ea1e30921989a43e41d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/6759f2268deb9f329812679e9dcb2d0083b2a30b",
-                "reference": "6759f2268deb9f329812679e9dcb2d0083b2a30b",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/550e0fb7efa2f7a361d47ea1e30921989a43e41d",
+                "reference": "550e0fb7efa2f7a361d47ea1e30921989a43e41d",
                 "shasum": ""
             },
             "require": {
@@ -1102,7 +1113,8 @@
                 "phpdocumentor/reflection-common": "^2.0"
             },
             "require-dev": {
-                "ext-tokenizer": "*"
+                "ext-tokenizer": "*",
+                "psalm/phar": "^4.8"
             },
             "default-branch": true,
             "type": "library",
@@ -1131,7 +1143,7 @@
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.x"
             },
-            "time": "2021-02-02T21:09:27+00:00"
+            "time": "2021-07-24T09:21:39+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -1206,12 +1218,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "c542a519dcd0fd583b355717d8110bfa3faa8a9e"
+                "reference": "17fb4d4fcb09d120cbdd9641bc47163e3ed73371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c542a519dcd0fd583b355717d8110bfa3faa8a9e",
-                "reference": "c542a519dcd0fd583b355717d8110bfa3faa8a9e",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/17fb4d4fcb09d120cbdd9641bc47163e3ed73371",
+                "reference": "17fb4d4fcb09d120cbdd9641bc47163e3ed73371",
                 "shasum": ""
             },
             "require": {
@@ -1275,7 +1287,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-03T04:58:09+00:00"
+            "time": "2021-07-24T15:03:19+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1524,12 +1536,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4a4bf16447528af3b15c52dfb352d26d73541c68"
+                "reference": "1c9fbeed12be364fc04de1566f1e5291fac2fa9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4a4bf16447528af3b15c52dfb352d26d73541c68",
-                "reference": "4a4bf16447528af3b15c52dfb352d26d73541c68",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1c9fbeed12be364fc04de1566f1e5291fac2fa9f",
+                "reference": "1c9fbeed12be364fc04de1566f1e5291fac2fa9f",
                 "shasum": ""
             },
             "require": {
@@ -1619,7 +1631,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-22T06:47:23+00:00"
+            "time": "2021-07-25T08:45:44+00:00"
         },
         {
             "name": "psr/container",
@@ -2573,6 +2585,7 @@
                     "type": "github"
                 }
             ],
+            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {
@@ -3862,9 +3875,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "utopia-php/framework": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
