@@ -70,6 +70,13 @@ App::get('/chunked')
         }
     });
 
+App::get('/redirect')
+    ->inject('response')
+    ->action(function ($response) {
+        /** @var Utopia/Swoole/Response $response */
+        $response->redirect('/');
+    });
+
 $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swooleResponse) {
     $request = new Request($swooleRequest);
     $response = new Response($swooleResponse);

@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "utopia-php/framework",
-            "version": "0.17.0",
+            "version": "0.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/utopia-php/framework.git",
-                "reference": "2952f6a21c2229f7a63ecb955bda676158174aec"
+                "reference": "3b942511eae94823642e2403bf27fa8798d1d855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/framework/zipball/2952f6a21c2229f7a63ecb955bda676158174aec",
-                "reference": "2952f6a21c2229f7a63ecb955bda676158174aec",
+                "url": "https://api.github.com/repos/utopia-php/framework/zipball/3b942511eae94823642e2403bf27fa8798d1d855",
+                "reference": "3b942511eae94823642e2403bf27fa8798d1d855",
                 "shasum": ""
             },
             "require": {
@@ -51,9 +51,9 @@
             ],
             "support": {
                 "issues": "https://github.com/utopia-php/framework/issues",
-                "source": "https://github.com/utopia-php/framework/tree/0.17.0"
+                "source": "https://github.com/utopia-php/framework/tree/0.17.1"
             },
-            "time": "2021-07-26T05:56:11+00:00"
+            "time": "2021-07-27T09:12:27+00:00"
         }
     ],
     "packages-dev": [
@@ -1536,12 +1536,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1c9fbeed12be364fc04de1566f1e5291fac2fa9f"
+                "reference": "ec80357c98afbdf2bfc4957f532d9174ca5d8256"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1c9fbeed12be364fc04de1566f1e5291fac2fa9f",
-                "reference": "1c9fbeed12be364fc04de1566f1e5291fac2fa9f",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ec80357c98afbdf2bfc4957f532d9174ca5d8256",
+                "reference": "ec80357c98afbdf2bfc4957f532d9174ca5d8256",
                 "shasum": ""
             },
             "require": {
@@ -1631,7 +1631,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-25T08:45:44+00:00"
+            "time": "2021-07-26T09:48:12+00:00"
         },
         {
             "name": "psr/container",

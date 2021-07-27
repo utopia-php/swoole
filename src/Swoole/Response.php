@@ -48,6 +48,18 @@ class Response extends UtopiaResponse
     }
 
     /**
+     * Send Status Code
+     * 
+     * @param int $statusCode
+     * 
+     * @return void
+     */
+    protected function sendStatus($statusCode): void
+    {
+        $this->swoole->status($statusCode);
+    }
+
+    /**
      * Send Header
      * 
      * @param string $key
