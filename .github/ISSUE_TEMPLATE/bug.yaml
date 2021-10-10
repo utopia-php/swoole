@@ -37,11 +37,7 @@ body:
       label: "🎲 Utopia Swoole version"
       description: "What version of Utopia are you running?"
       options:
-        - Version 0.18.x
-        - Version 0.17.x
-        - Version 0.16.x
-        - Version 0.15.x
-        - Version 0.14.x
+        - Version 4.6.6
         - Different version (specify in environment)
     validations:
       required: true
