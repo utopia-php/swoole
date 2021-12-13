@@ -14,14 +14,14 @@
         "psr-4": {"Utopia\\Swoole\\": "src/Swoole"}
     },
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.0",
         "ext-swoole": "*",
         "utopia-php/framework": "0.*.*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3",
-        "vimeo/psalm": "4.0.1",
-        "swoole/ide-helper": "4.5.5"
+        "vimeo/psalm": "4.15.0",
+        "swoole/ide-helper": "4.8.3"
     },
     "minimum-stability": "dev"
 }
