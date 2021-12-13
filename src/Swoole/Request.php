@@ -12,7 +12,7 @@ class Request extends UtopiaRequest
      * 
      * @var SwooleRequest
      */
-    protected $swoole;
+    protected SwooleRequest $swoole;
 
     /**
      * Request constructor.
@@ -31,7 +31,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getParam(string $key, $default = null)
+    public function getParam(string $key, $default = null): mixed
     {
         switch($this->getMethod()) {
             case self::METHOD_GET:
@@ -83,7 +83,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getQuery(string $key, $default = null)
+    public function getQuery(string $key, $default = null): mixed
     {
         return (isset($this->swoole->get[$key])) ? $this->swoole->get[$key] : $default;
     }
@@ -97,7 +97,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getPayload(string $key, $default = null)
+    public function getPayload(string $key, $default = null): mixed
     {
         $payload = $this->generateInput();
 
@@ -113,7 +113,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getServer(string $key, $default = null)
+    public function getServer(string $key, $default = null): mixed
     {
         return (isset($this->swoole->server) && isset($this->swoole->server[$key])) ? $this->swoole->server[$key] : $default;
     }
