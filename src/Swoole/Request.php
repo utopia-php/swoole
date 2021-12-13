@@ -97,7 +97,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getPayload(string $key, $default = null)
+    public function getPayload(string $key, $default = null): mixed
     {
         $payload = $this->generateInput();
 
