@@ -148,7 +148,16 @@ class Request extends UtopiaRequest
             return 'http';
         }
 
-        return $protocol;
+        switch ($protocol) {
+            case 'http':
+            case 'https':
+            case 'ws':
+            case 'wss':    
+                return $protocol;
+                break;
+            default:
+                return 'https';
+        }
     }
 
     /**
