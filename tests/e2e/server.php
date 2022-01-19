@@ -77,6 +77,15 @@ App::get('/redirect')
         $response->redirect('/');
     });
 
+App::get('/protocol')
+    ->inject('request')
+    ->inject('response')
+    ->action(function ($request, $response) {
+        /** @var Utopia/Swoole/Response $response */
+        /** @var Utopia/Swoole/Request $request */
+        $response->send($request->getProtocol());
+    });
+
 $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swooleResponse) {
     $request = new Request($swooleRequest);
     $response = new Response($swooleResponse);
