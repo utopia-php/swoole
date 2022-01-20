@@ -41,4 +41,45 @@ class ResponseTest extends TestCase
         $response = $this->client->call(Client::METHOD_GET, '/redirect');
         $this->assertEquals('Hello World!', $response['body']);
     }
+
+    public function testProtocolFilterFail()
+    {
+        $responseinvalid = $this->client->call(Client::METHOD_GET, '/protocol', [
+            'x-forwarded-proto: randomjibberish'
+        ]);
+        $this->assertEquals('https', $responseinvalid['body']);
+    }
+
+    public function testProtocolFilterHTTP()
+    {
+        $responseinvalid = $this->client->call(Client::METHOD_GET, '/protocol', array(
+            'x-forwarded-proto: http'
+        ));
+        $this->assertEquals('http', $responseinvalid['body']);
+    }
+
+    public function testProtocolFilterHTTPS()
+    {
+        $responseinvalid = $this->client->call(Client::METHOD_GET, '/protocol', array(
+            'x-forwarded-proto: https'
+        ));
+        $this->assertEquals('https', $responseinvalid['body']);
+    }
+
+
+    public function testProtocolFilterWS()
+    {
+        $responseinvalid = $this->client->call(Client::METHOD_GET, '/protocol', array(
+            'x-forwarded-proto: ws'
+        ));
+        $this->assertEquals('ws', $responseinvalid['body']);
+    }
+
+    public function testProtocolFilterWSS()
+    {
+        $responseinvalid = $this->client->call(Client::METHOD_GET, '/protocol', array(
+            'x-forwarded-proto: wss'
+        ));
+        $this->assertEquals('wss', $responseinvalid['body']);
+    }
 }
