@@ -17,4 +17,12 @@ class RedisConfig extends SwooleRedisConfig
         $this->auth = $auth;
         return $this;
     }
+
+    /**
+     * @return string|array $auth
+     */
+    public function getAuth()
+    {
+        return $this->auth;
+    }
 }
