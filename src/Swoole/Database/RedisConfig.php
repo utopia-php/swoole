@@ -6,23 +6,23 @@ use Swoole\Database\RedisConfig as SwooleRedisConfig;
 
 class RedisConfig extends SwooleRedisConfig
 {
-    /** @var string|array */
-    protected $auth = '';
+    /** @var array */
+    protected $userauth = [];
 
     /**
-     * @param string|array $auth
+     * @param array $auth
      */
-    public function withAuth($auth): self
+    public function withUserAuth(array $userauth): self
     {
-        $this->auth = $auth;
+        $this->userauth = $userauth;
         return $this;
     }
 
     /**
      * @return string|array $auth
      */
-    public function getAuth()
+    public function getUserAuth(): array
     {
-        return $this->auth;
+        return $this->userauth;
     }
 }
