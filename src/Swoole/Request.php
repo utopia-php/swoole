@@ -31,7 +31,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getParam(string $key, $default = null): mixed
+    public function getParam(string $key, mixed $default = null): mixed
     {
         switch($this->getMethod()) {
             case self::METHOD_GET:
@@ -70,8 +70,6 @@ class Request extends UtopiaRequest
             default:
                 return (!empty($this->swoole->get)) ? $this->swoole->get : [];
         }
-
-        return [];
     }
 
     /**
@@ -83,7 +81,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getQuery(string $key, $default = null): mixed
+    public function getQuery(string $key, mixed $default = null): mixed
     {
         return (isset($this->swoole->get[$key])) ? $this->swoole->get[$key] : $default;
     }
@@ -97,7 +95,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getPayload(string $key, $default = null): mixed
+    public function getPayload(string $key, mixed $default = null): mixed
     {
         $payload = $this->generateInput();
 
@@ -113,7 +111,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getServer(string $key, $default = null): mixed
+    public function getServer(string $key, mixed $default = null): mixed
     {
         return (isset($this->swoole->server) && isset($this->swoole->server[$key])) ? $this->swoole->server[$key] : $default;
     }
@@ -207,6 +205,7 @@ class Request extends UtopiaRequest
      *
      * Return HTTP referer header
      *
+     * @param string $default
      * @return string
      */
     public function getReferer(string $default = ''): string
@@ -219,6 +218,7 @@ class Request extends UtopiaRequest
      *
      * Return HTTP origin header
      *
+     * @param string $default
      * @return string
      */
     public function getOrigin(string $default = ''): string
@@ -231,6 +231,7 @@ class Request extends UtopiaRequest
      *
      * Return HTTP user agent header
      *
+     * @param  string $default
      * @return string
      */
     public function getUserAgent(string $default = ''): string
@@ -243,6 +244,7 @@ class Request extends UtopiaRequest
      *
      * Return HTTP accept header
      *
+     * @param string $default
      * @return string
      */
     public function getAccept(string $default = ''): string
@@ -258,7 +260,7 @@ class Request extends UtopiaRequest
      * @param string $key
      * @return array
      */
-    public function getFiles($key): array
+    public function getFiles(string $key): array
     {
         $key = strtolower($key);
         return (isset($this->swoole->files[$key])) ? $this->swoole->files[$key] : [];
