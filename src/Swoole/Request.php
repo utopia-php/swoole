@@ -113,7 +113,7 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getServer(string $key, $default = null): mixed
+    public function getServer(string $key, ?string $default = null): ?string
     {
         return (isset($this->swoole->server) && isset($this->swoole->server[$key])) ? $this->swoole->server[$key] : $default;
     }
