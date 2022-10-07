@@ -13,12 +13,12 @@ class Response extends UtopiaResponse
      * @var SwooleResponse
      */
     protected $swoole;
-    
+
     /**
      * Response constructor.
      */
     public function __construct(SwooleResponse $response)
-    {        
+    {
         $this->swoole = $response;
         parent::__construct(\microtime(true));
     }
@@ -42,7 +42,7 @@ class Response extends UtopiaResponse
      * 
      * @return void
      */
-    protected function end(string $content=null): void
+    protected function end(string $content = null): void
     {
         $this->swoole->end($content);
     }
@@ -54,9 +54,9 @@ class Response extends UtopiaResponse
      * 
      * @return void
      */
-    protected function sendStatus($statusCode): void
+    protected function sendStatus(int $statusCode): void
     {
-        $this->swoole->status($statusCode);
+        $this->swoole->status((string) $statusCode);
     }
 
     /**
@@ -86,15 +86,14 @@ class Response extends UtopiaResponse
     protected function sendCookie(string $name, string $value, array $options): void
     {
         $this->swoole->cookie(
-            $name,
-            $value,
-            $options['expire'] ?? 0,
-            $options['path'] ?? "",
-            $options['domain'] ?? "",
-            $options['secure'] ?? false,
-            $options['httponly'] ?? false,
-            $options['samesite'] ?? false,
+            name: $name,
+            value: $value,
+            expires: $options['expire'] ?? 0,
+            path: $options['path'] ?? "",
+            domain: $options['domain'] ?? "",
+            secure: $options['secure'] ?? false,
+            httponly: $options['httponly'] ?? false,
+            samesite: $options['samesite'] ?? false,
         );
-
     }
 }
