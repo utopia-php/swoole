@@ -37,9 +37,9 @@ class Response extends UtopiaResponse
 
     /**
      * End
-     * 
-     * @param string $content
-     * 
+     *
+     * @param string|null $content
+     *
      * @return void
      */
     protected function end(string $content = null): void

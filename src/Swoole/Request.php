@@ -94,10 +94,10 @@ class Request extends UtopiaRequest
      * Method for querying server parameters. If $key is not found $default value will be returned.
      *
      * @param string $key
-     * @param string  $default
-     * @return mixed
+     * @param string|null  $default
+     * @return string|null
      */
-    public function getServer(string $key, string $default = null): string
+    public function getServer(string $key, string $default = null): ?string
     {
         return $this->swoole->server[$key] ?? $default;
     }
@@ -111,7 +111,8 @@ class Request extends UtopiaRequest
      */
     public function getIP(): string
     {
-        $ips = explode(',', $this->getHeader('x-forwarded-for', $this->getServer('remote_addr', '0.0.0.0')));
+        $ips = explode(',', $this->getHeader('x-forwarded-for', $this->getServer('remote_addr') ?? '0.0.0.0'));
+
         return trim($ips[0] ?? '');
     }
 
@@ -126,7 +127,7 @@ class Request extends UtopiaRequest
      */
     public function getProtocol(): string
     {
-        $protocol = $this->getHeader('x-forwarded-proto', $this->getServer('server_protocol', 'https'));
+        $protocol = $this->getHeader('x-forwarded-proto', $this->getServer('server_protocol') ?? 'https');
 
         if ($protocol === 'HTTP/1.1') {
             return 'http';
@@ -171,7 +172,7 @@ class Request extends UtopiaRequest
      */
     public function getMethod(): string
     {
-        return $this->getServer('request_method', 'UNKNOWN');
+        return $this->getServer('request_method') ?? 'UNKNOWN';
     }
 
     /**
@@ -183,7 +184,7 @@ class Request extends UtopiaRequest
      */
     public function getURI(): string
     {
-        return $this->getServer('request_uri', '');
+        return $this->getServer('request_uri') ?? '';
     }
 
     /**
@@ -245,7 +246,8 @@ class Request extends UtopiaRequest
     public function getFiles($key): array
     {
         $key = strtolower($key);
-        return (isset($this->swoole->files[$key])) ? $this->swoole->files[$key] : [];
+
+        return $this->swoole->files[$key] ?? [];
     }
 
     /**
@@ -260,7 +262,8 @@ class Request extends UtopiaRequest
     public function getCookie(string $key, string $default = ''): string
     {
         $key = strtolower($key);
-        return (isset($this->swoole->cookie[$key])) ? $this->swoole->cookie[$key] : $default;
+
+        return $this->swoole->cookie[$key] ?? $default;
     }
 
     /**
@@ -274,7 +277,7 @@ class Request extends UtopiaRequest
      */
     public function getHeader(string $key, string $default = ''): string
     {
-        return (isset($this->swoole->header[$key])) ? $this->swoole->header[$key] : $default;
+        return $this->swoole->header[$key] ?? $default;
     }
 
     /**
