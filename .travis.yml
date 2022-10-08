@@ -1,29 +1,29 @@
-dist: xenial
+dist: focal
 
 os: linux
 
 notifications:
   email:
-  - team@appwrite.io
+    - team@appwrite.io
 
 before_install:
-- curl -fsSL https://get.docker.com | sh
-- echo '{"experimental":"enabled"}' | sudo tee /etc/docker/daemon.json
-- mkdir -p $HOME/.docker
-- echo '{"experimental":"enabled"}' | sudo tee $HOME/.docker/config.json
-- sudo service docker start
-- >
-  if [ ! -z "${DOCKERHUB_PULL_USERNAME:-}" ]; then
-    echo "${DOCKERHUB_PULL_PASSWORD}" | docker login --username "${DOCKERHUB_PULL_USERNAME}" --password-stdin
-  fi
-- docker --version
-- export COMPOSE_INTERACTIVE_NO_CLI=1
-    
+  - curl -fsSL https://get.docker.com | sh
+  - echo '{"experimental":"enabled"}' | sudo tee /etc/docker/daemon.json
+  - mkdir -p $HOME/.docker
+  - echo '{"experimental":"enabled"}' | sudo tee $HOME/.docker/config.json
+  - sudo service docker start
+  - >
+    if [ ! -z "${DOCKERHUB_PULL_USERNAME:-}" ]; then
+      echo "${DOCKERHUB_PULL_PASSWORD}" | docker login --username "${DOCKERHUB_PULL_USERNAME}" --password-stdin
+    fi
+  - docker --version
+  - export COMPOSE_INTERACTIVE_NO_CLI=1
+
 install:
-- docker-compose up -d
-- sleep 10
+  - docker-compose up -d
+  - sleep 10
 
 script:
-- docker ps -a
-- docker-compose exec php vendor/bin/phpunit --debug
-- docker-compose exec php vendor/bin/psalm
+  - docker ps -a
+  - docker-compose exec php vendor/bin/phpunit --debug
+  - docker-compose exec php vendor/bin/psalm

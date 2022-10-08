@@ -9,7 +9,7 @@ class Request extends UtopiaRequest
 {
     /**
      * Swoole Request Object
-     * 
+     *
      * @var SwooleRequest
      */
     protected SwooleRequest $swoole;
@@ -23,29 +23,21 @@ class Request extends UtopiaRequest
     }
 
     /**
-     * Get Param
+     * Get param by current method name.
      *
-     * Get param by current method name
-     *
-     * @param  string $key
-     * @param  mixed  $default
+     * @param string $key
+     * @param mixed $default
      * @return mixed
      */
-    public function getParam(string $key, $default = null): mixed
+    public function getParam(string $key, mixed $default = null): mixed
     {
-        switch($this->getMethod()) {
-            case self::METHOD_GET:
-                return $this->getQuery($key, $default);
-                break;
-            case self::METHOD_POST:
-            case self::METHOD_PUT:
-            case self::METHOD_PATCH:
-            case self::METHOD_DELETE:
-                return $this->getPayload($key, $default);
-                break;
-            default:
-                return $this->getQuery($key, $default);
-        }
+        return match ($this->getMethod()) {
+            self::METHOD_POST,
+            self::METHOD_PUT,
+            self::METHOD_PATCH,
+            self::METHOD_DELETE => $this->getPayload($key, $default),
+            default => $this->getQuery($key, $default)
+        };
     }
 
     /**
@@ -57,21 +49,13 @@ class Request extends UtopiaRequest
      */
     public function getParams(): array
     {
-        switch($this->getMethod()) {
-            case self::METHOD_GET:
-                return (!empty($this->swoole->get)) ? $this->swoole->get : [];
-                break;
-            case self::METHOD_POST:
-            case self::METHOD_PUT:
-            case self::METHOD_PATCH:
-            case self::METHOD_DELETE:
-                return $this->generateInput();
-                break;
-            default:
-                return (!empty($this->swoole->get)) ? $this->swoole->get : [];
-        }
-
-        return [];
+        return match ($this->getMethod()) {
+            self::METHOD_POST,
+            self::METHOD_PUT,
+            self::METHOD_PATCH,
+            self::METHOD_DELETE => $this->generateInput(),
+            default => $this->swoole->get ?? []
+        };
     }
 
     /**
@@ -83,9 +67,9 @@ class Request extends UtopiaRequest
      * @param  mixed  $default
      * @return mixed
      */
-    public function getQuery(string $key, $default = null): mixed
+    public function getQuery(string $key, mixed $default = null): mixed
     {
-        return (isset($this->swoole->get[$key])) ? $this->swoole->get[$key] : $default;
+        return $this->swoole->get[$key] ?? $default;
     }
 
     /**
@@ -101,7 +85,7 @@ class Request extends UtopiaRequest
     {
         $payload = $this->generateInput();
 
-        return (isset($payload[$key])) ? $payload[$key] : $default;
+        return $payload[$key] ?? $default;
     }
 
     /**
@@ -109,13 +93,13 @@ class Request extends UtopiaRequest
      *
      * Method for querying server parameters. If $key is not found $default value will be returned.
      *
-     * @param  string $key
-     * @param  mixed  $default
-     * @return mixed
+     * @param string $key
+     * @param string|null  $default
+     * @return string|null
      */
-    public function getServer(string $key, $default = null): mixed
+    public function getServer(string $key, string $default = null): ?string
     {
-        return (isset($this->swoole->server) && isset($this->swoole->server[$key])) ? $this->swoole->server[$key] : $default;
+        return $this->swoole->server[$key] ?? $default;
     }
 
     /**
@@ -127,7 +111,8 @@ class Request extends UtopiaRequest
      */
     public function getIP(): string
     {
-        $ips = explode(',',$this->getHeader('x-forwarded-for', $this->getServer('remote_addr', '0.0.0.0')));
+        $ips = explode(',', $this->getHeader('x-forwarded-for', $this->getServer('remote_addr') ?? '0.0.0.0'));
+
         return trim($ips[0] ?? '');
     }
 
@@ -142,9 +127,9 @@ class Request extends UtopiaRequest
      */
     public function getProtocol(): string
     {
-        $protocol = $this->getHeader('x-forwarded-proto', $this->getServer('server_protocol', 'https'));
+        $protocol = $this->getHeader('x-forwarded-proto', $this->getServer('server_protocol') ?? 'https');
 
-        if($protocol === 'HTTP/1.1') {
+        if ($protocol === 'HTTP/1.1') {
             return 'http';
         }
 
@@ -163,7 +148,7 @@ class Request extends UtopiaRequest
      */
     public function getPort(): string
     {
-        return $this->getHeader('x-forwarded-port', (string)\parse_url($this->getProtocol().'://'.$this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_PORT));
+        return $this->getHeader('x-forwarded-port', (string)\parse_url($this->getProtocol() . '://' . $this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_PORT));
     }
 
     /**
@@ -175,7 +160,7 @@ class Request extends UtopiaRequest
      */
     public function getHostname(): string
     {
-        return \parse_url($this->getProtocol().'://'.$this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_HOST);
+        return \parse_url($this->getProtocol() . '://' . $this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_HOST);
     }
 
     /**
@@ -187,7 +172,7 @@ class Request extends UtopiaRequest
      */
     public function getMethod(): string
     {
-        return $this->getServer('request_method', 'UNKNOWN');
+        return $this->getServer('request_method') ?? 'UNKNOWN';
     }
 
     /**
@@ -199,7 +184,7 @@ class Request extends UtopiaRequest
      */
     public function getURI(): string
     {
-        return $this->getServer('request_uri', '');
+        return $this->getServer('request_uri') ?? '';
     }
 
     /**
@@ -261,7 +246,8 @@ class Request extends UtopiaRequest
     public function getFiles($key): array
     {
         $key = strtolower($key);
-        return (isset($this->swoole->files[$key])) ? $this->swoole->files[$key] : [];
+
+        return $this->swoole->files[$key] ?? [];
     }
 
     /**
@@ -276,7 +262,8 @@ class Request extends UtopiaRequest
     public function getCookie(string $key, string $default = ''): string
     {
         $key = strtolower($key);
-        return (isset($this->swoole->cookie[$key])) ? $this->swoole->cookie[$key] : $default;
+
+        return $this->swoole->cookie[$key] ?? $default;
     }
 
     /**
@@ -290,7 +277,7 @@ class Request extends UtopiaRequest
      */
     public function getHeader(string $key, string $default = ''): string
     {
-        return (isset($this->swoole->header[$key])) ? $this->swoole->header[$key] : $default;
+        return $this->swoole->header[$key] ?? $default;
     }
 
     /**
@@ -320,7 +307,7 @@ class Request extends UtopiaRequest
                     break;
             }
 
-            if(empty($this->payload)) { // Make sure we return same data type even if json payload is empty or failed
+            if (empty($this->payload)) { // Make sure we return same data type even if json payload is empty or failed
                 $this->payload = [];
             }
         }
