@@ -4,12 +4,6 @@
     "type": "library",
     "keywords": ["php", "framework", "upf", "utopia", "swoole", "http", "server"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Eldad Fux",
-            "email": "team@appwrite.io"
-        }
-    ],
     "autoload": {
         "psr-4": {"Utopia\\Swoole\\": "src/Swoole"}
     },
