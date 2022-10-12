@@ -182,6 +182,13 @@ class Request extends UtopiaRequest
         return $this->getServer('request_method') ?? 'UNKNOWN';
     }
 
+    public function setMethod(string $method): UtopiaRequest
+    {
+        $this->setServer('request_method', $method);
+
+        return $this;
+    }
+
     /**
      * Get URI
      *
@@ -325,7 +332,7 @@ class Request extends UtopiaRequest
      * @param array $params
      * @return void
      */
-    public function setGet(array $params)
+    public function setGet(array $params): void
     {
         $this->swoole->get = $params;
     }
@@ -336,7 +343,7 @@ class Request extends UtopiaRequest
      * @param array $params
      * @return void
      */
-    public function setPost(array $params)
+    public function setPost(array $params): void
     {
         $this->swoole->post = $params;
     }
