@@ -102,6 +102,13 @@ class Request extends UtopiaRequest
         return $this->swoole->server[$key] ?? $default;
     }
 
+    public function setServer(string $key, string $value): UtopiaRequest
+    {
+        $this->swoole->server[$key] = $value;
+
+        return $this;
+    }
+
     /**
      * Get IP
      *
@@ -185,6 +192,13 @@ class Request extends UtopiaRequest
     public function getURI(): string
     {
         return $this->getServer('request_uri') ?? '';
+    }
+
+    public function setURI(string $uri): UtopiaRequest
+    {
+        $this->setServer('request_uri', $uri);
+
+        return $this;
     }
 
     /**
@@ -278,6 +292,53 @@ class Request extends UtopiaRequest
     public function getHeader(string $key, string $default = ''): string
     {
         return $this->swoole->header[$key] ?? $default;
+    }
+
+    /**
+     * Method for adding HTTP header parameters.
+     *
+     * @param string $key
+     * @param string $value
+     * @return void
+     */
+    public function setHeader(string $key, string $value): void
+    {
+        $this->swoole->header[$key] = $value;
+    }
+
+    /**
+     * Method for removing HTTP header parameters.
+     *
+     * @param string $key
+     * @return void
+     */
+    public function removeHeader(string $key): void
+    {
+        if (isset($this->swoole->header[$key])) {
+            unset($this->swoole->header[$key]);
+        }
+    }
+
+    /**
+     * Method for setting GET parameters.
+     *
+     * @param array $params
+     * @return void
+     */
+    public function setGet(array $params)
+    {
+        $this->swoole->get = $params;
+    }
+
+    /**
+     * Method for setting POST parameters.
+     *
+     * @param array $params
+     * @return void
+     */
+    public function setPost(array $params)
+    {
+        $this->swoole->post = $params;
     }
 
     /**

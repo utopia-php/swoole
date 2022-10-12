@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "42855e270e4186cc6145a0750e242f05",
+    "content-hash": "f42019d8ce17cb1e44a8529d89f3d6b7",
     "packages": [
         {
             "name": "utopia-php/framework",
-            "version": "0.22.1",
+            "version": "dev-feat-allow-mutations",
             "source": {
                 "type": "git",
                 "url": "https://github.com/utopia-php/framework.git",
-                "reference": "9f35d36ed4b8fa1c92962c77ef02b49c2f5919df"
+                "reference": "bf561c125647dcee8d6b3a5b3934c7ece91f326e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/framework/zipball/9f35d36ed4b8fa1c92962c77ef02b49c2f5919df",
-                "reference": "9f35d36ed4b8fa1c92962c77ef02b49c2f5919df",
+                "url": "https://api.github.com/repos/utopia-php/framework/zipball/bf561c125647dcee8d6b3a5b3934c7ece91f326e",
+                "reference": "bf561c125647dcee8d6b3a5b3934c7ece91f326e",
                 "shasum": ""
             },
             "require": {
@@ -51,9 +51,9 @@
             ],
             "support": {
                 "issues": "https://github.com/utopia-php/framework/issues",
-                "source": "https://github.com/utopia-php/framework/tree/0.22.1"
+                "source": "https://github.com/utopia-php/framework/tree/feat-allow-mutations"
             },
-            "time": "2022-10-07T14:51:40+00:00"
+            "time": "2022-10-12T02:02:55+00:00"
         }
     ],
     "packages-dev": [
@@ -1244,12 +1244,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "5dafc638b7c15a7f1472d705320924410adf6b64"
+                "reference": "753b8456f6514f91d557528c8306e130455e846a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/5dafc638b7c15a7f1472d705320924410adf6b64",
-                "reference": "5dafc638b7c15a7f1472d705320924410adf6b64",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/753b8456f6514f91d557528c8306e130455e846a",
+                "reference": "753b8456f6514f91d557528c8306e130455e846a",
                 "shasum": ""
             },
             "require": {
@@ -1313,7 +1313,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-19T07:33:28+00:00"
+            "time": "2022-10-11T09:41:20+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1562,12 +1562,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4f2a753c1567eefbe4800dbfd791bf843faea9c4"
+                "reference": "2132be265b1e7afb9693cf5556a73d56aa93c871"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4f2a753c1567eefbe4800dbfd791bf843faea9c4",
-                "reference": "4f2a753c1567eefbe4800dbfd791bf843faea9c4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2132be265b1e7afb9693cf5556a73d56aa93c871",
+                "reference": "2132be265b1e7afb9693cf5556a73d56aa93c871",
                 "shasum": ""
             },
             "require": {
@@ -1656,7 +1656,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-05T07:49:29+00:00"
+            "time": "2022-10-11T07:32:15+00:00"
         },
         {
             "name": "psr/container",
@@ -2775,12 +2775,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "cd59a4ed35a6627a84a40807f340c32b7975efcc"
+                "reference": "a6967676ca56c6fc4bf68a86412dab7530ea5b48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/cd59a4ed35a6627a84a40807f340c32b7975efcc",
-                "reference": "cd59a4ed35a6627a84a40807f340c32b7975efcc",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a6967676ca56c6fc4bf68a86412dab7530ea5b48",
+                "reference": "a6967676ca56c6fc4bf68a86412dab7530ea5b48",
                 "shasum": ""
             },
             "require": {
@@ -2863,7 +2863,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-07T08:04:14+00:00"
+            "time": "2022-10-09T22:09:52+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3359,12 +3359,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "b1f92c285463e1ae7d06dd46f28545c04a0c02ad"
+                "reference": "a97632a527ba2e699a978bc5d7da3d2320e6a677"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/b1f92c285463e1ae7d06dd46f28545c04a0c02ad",
-                "reference": "b1f92c285463e1ae7d06dd46f28545c04a0c02ad",
+                "url": "https://api.github.com/repos/symfony/string/zipball/a97632a527ba2e699a978bc5d7da3d2320e6a677",
+                "reference": "a97632a527ba2e699a978bc5d7da3d2320e6a677",
                 "shasum": ""
             },
             "require": {
@@ -3437,7 +3437,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-07T08:04:14+00:00"
+            "time": "2022-10-10T09:34:55+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -3708,7 +3708,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "utopia-php/framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

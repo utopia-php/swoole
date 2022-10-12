@@ -16,7 +16,7 @@
     "require": {
         "php": ">=8.0",
         "ext-swoole": "*",
-        "utopia-php/framework": "0.*.*"
+        "utopia-php/framework": "dev-feat-allow-mutations"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3",
