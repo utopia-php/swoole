@@ -88,6 +88,11 @@ class Request extends UtopiaRequest
         return $payload[$key] ?? $default;
     }
 
+    public function getRawPayload(): string
+    {
+        return $this->swoole->rawContent();
+    }
+
     /**
      * Get server
      *
