@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "42855e270e4186cc6145a0750e242f05",
+    "content-hash": "460033156ed5bc2662def3e86e9454d7",
     "packages": [
         {
             "name": "utopia-php/framework",
@@ -728,6 +728,73 @@
             "time": "2022-06-19T17:15:06+00:00"
         },
         {
+            "name": "laravel/pint",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/pint.git",
+                "reference": "8f034a91ef2da8693d4a7199372df45fbc7ec144"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/8f034a91ef2da8693d4a7199372df45fbc7ec144",
+                "reference": "8f034a91ef2da8693d4a7199372df45fbc7ec144",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-tokenizer": "*",
+                "ext-xml": "*",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.11.0",
+                "illuminate/view": "^9.32.0",
+                "laravel-zero/framework": "^9.2.0",
+                "mockery/mockery": "^1.5.1",
+                "nunomaduro/larastan": "^2.2.0",
+                "nunomaduro/termwind": "^1.14.0",
+                "pestphp/pest": "^1.22.1"
+            },
+            "default-branch": true,
+            "bin": [
+                "builds/pint"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "App\\": "app/",
+                    "Database\\Seeders\\": "database/seeders/",
+                    "Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "An opinionated code formatter for PHP.",
+            "homepage": "https://laravel.com",
+            "keywords": [
+                "format",
+                "formatter",
+                "lint",
+                "linter",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/pint/issues",
+                "source": "https://github.com/laravel/pint"
+            },
+            "time": "2022-09-29T12:05:27+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.x-dev",
             "source": {
@@ -1244,12 +1311,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "5dafc638b7c15a7f1472d705320924410adf6b64"
+                "reference": "c0c5c1c0e3a0aec88a74b6fcffd359d095192be4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/5dafc638b7c15a7f1472d705320924410adf6b64",
-                "reference": "5dafc638b7c15a7f1472d705320924410adf6b64",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c0c5c1c0e3a0aec88a74b6fcffd359d095192be4",
+                "reference": "c0c5c1c0e3a0aec88a74b6fcffd359d095192be4",
                 "shasum": ""
             },
             "require": {
@@ -1313,7 +1380,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-19T07:33:28+00:00"
+            "time": "2022-10-13T05:15:14+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1562,12 +1629,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "4f2a753c1567eefbe4800dbfd791bf843faea9c4"
+                "reference": "b24fb30d50d8ef4c97f5e9be3132c0a96a16e5c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4f2a753c1567eefbe4800dbfd791bf843faea9c4",
-                "reference": "4f2a753c1567eefbe4800dbfd791bf843faea9c4",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b24fb30d50d8ef4c97f5e9be3132c0a96a16e5c5",
+                "reference": "b24fb30d50d8ef4c97f5e9be3132c0a96a16e5c5",
                 "shasum": ""
             },
             "require": {
@@ -1656,7 +1723,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-05T07:49:29+00:00"
+            "time": "2022-10-13T05:08:36+00:00"
         },
         {
             "name": "psr/container",
@@ -2775,12 +2842,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "cd59a4ed35a6627a84a40807f340c32b7975efcc"
+                "reference": "a6967676ca56c6fc4bf68a86412dab7530ea5b48"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/cd59a4ed35a6627a84a40807f340c32b7975efcc",
-                "reference": "cd59a4ed35a6627a84a40807f340c32b7975efcc",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a6967676ca56c6fc4bf68a86412dab7530ea5b48",
+                "reference": "a6967676ca56c6fc4bf68a86412dab7530ea5b48",
                 "shasum": ""
             },
             "require": {
@@ -2863,7 +2930,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-07T08:04:14+00:00"
+            "time": "2022-10-09T22:09:52+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3359,12 +3426,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "b1f92c285463e1ae7d06dd46f28545c04a0c02ad"
+                "reference": "a97632a527ba2e699a978bc5d7da3d2320e6a677"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/b1f92c285463e1ae7d06dd46f28545c04a0c02ad",
-                "reference": "b1f92c285463e1ae7d06dd46f28545c04a0c02ad",
+                "url": "https://api.github.com/repos/symfony/string/zipball/a97632a527ba2e699a978bc5d7da3d2320e6a677",
+                "reference": "a97632a527ba2e699a978bc5d7da3d2320e6a677",
                 "shasum": ""
             },
             "require": {
@@ -3437,7 +3504,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-07T08:04:14+00:00"
+            "time": "2022-10-10T09:34:55+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -3708,7 +3775,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "laravel/pint": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
@@ -3716,5 +3785,5 @@
         "ext-swoole": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
