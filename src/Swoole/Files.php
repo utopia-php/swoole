@@ -9,17 +9,17 @@ class Files
     /**
      * @var array
      */
-    static protected array $loaded = [];
+    protected static array $loaded = [];
 
     /**
      * @var int
      */
-    static protected int $count = 0;
+    protected static int $count = 0;
 
     /**
      * @var array
      */
-    static protected array $mimeTypes = [];
+    protected static array $mimeTypes = [];
 
     /**
      * @var array
@@ -33,7 +33,7 @@ class Files
     /**
      * Add MIME type.
      *
-     * @param string $mimeType
+     * @param  string  $mimeType
      * @return void
      */
     public static function addMimeType(string $mimeType): void
@@ -44,7 +44,7 @@ class Files
     /**
      * Remove MIME type.
      *
-     * @param string $mimeType
+     * @param  string  $mimeType
      * @return void
      */
     public static function removeMimeType(string $mimeType): void
@@ -77,14 +77,15 @@ class Files
     /**
      * Load directory.
      *
-     * @param string $directory
-     * @param string|null $root
+     * @param  string  $directory
+     * @param  string|null  $root
      * @return void
+     *
      * @throws \Exception
      */
     public static function load(string $directory, string $root = null): void
     {
-        if (!is_readable($directory)) {
+        if (! is_readable($directory)) {
             throw new Exception("Failed to load directory: {$directory}");
         }
 
@@ -109,10 +110,11 @@ class Files
                 continue;
             }
 
-            $dirPath = $directory . '/' . $path;
+            $dirPath = $directory.'/'.$path;
 
             if (is_dir($dirPath)) {
                 self::load($dirPath, $root);
+
                 continue;
             }
 
@@ -126,7 +128,7 @@ class Files
                 'contents' => file_get_contents($dirPath),
                 'mimeType' => (array_key_exists($extension, self::EXTENSIONS))
                     ? self::EXTENSIONS[$extension]
-                    : mime_content_type($dirPath)
+                    : mime_content_type($dirPath),
             ];
 
             self::$count++;
@@ -138,12 +140,12 @@ class Files
     /**
      * Is file loaded.
      *
-     * @param string $uri
+     * @param  string  $uri
      * @return bool
      */
     public static function isFileLoaded(string $uri): bool
     {
-        if (!array_key_exists($uri, self::$loaded)) {
+        if (! array_key_exists($uri, self::$loaded)) {
             return false;
         }
 
@@ -153,14 +155,15 @@ class Files
     /**
      * Get file contents.
      *
-     * @param string $uri
+     * @param  string  $uri
      * @return string
+     *
      * @throws \Exception
      */
     public static function getFileContents(string $uri): string
     {
-        if (!array_key_exists($uri, self::$loaded)) {
-            throw new Exception('File not found or not loaded: ' . $uri);
+        if (! array_key_exists($uri, self::$loaded)) {
+            throw new Exception('File not found or not loaded: '.$uri);
         }
 
         return self::$loaded[$uri]['contents'];
@@ -169,14 +172,15 @@ class Files
     /**
      * Get file MIME type.
      *
-     * @param string $uri
+     * @param  string  $uri
      * @return string
-     * @throws \Exception 
+     *
+     * @throws \Exception
      */
     public static function getFileMimeType(string $uri): string
     {
-        if (!array_key_exists($uri, self::$loaded)) {
-            throw new Exception('File not found or not loaded: ' . $uri);
+        if (! array_key_exists($uri, self::$loaded)) {
+            throw new Exception('File not found or not loaded: '.$uri);
         }
 
         return self::$loaded[$uri]['mimeType'];
