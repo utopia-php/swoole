@@ -2,8 +2,8 @@
 
 namespace Utopia\Swoole;
 
-use Utopia\Request as UtopiaRequest;
 use Swoole\Http\Request as SwooleRequest;
+use Utopia\Request as UtopiaRequest;
 
 class Request extends UtopiaRequest
 {
@@ -25,8 +25,8 @@ class Request extends UtopiaRequest
     /**
      * Get param by current method name.
      *
-     * @param string $key
-     * @param mixed $default
+     * @param  string  $key
+     * @param  mixed  $default
      * @return mixed
      */
     public function getParam(string $key, mixed $default = null): mixed
@@ -63,7 +63,7 @@ class Request extends UtopiaRequest
      *
      * Method for querying HTTP GET request parameters. If $key is not found $default value will be returned.
      *
-     * @param  string $key
+     * @param  string  $key
      * @param  mixed  $default
      * @return mixed
      */
@@ -77,7 +77,7 @@ class Request extends UtopiaRequest
      *
      * Method for querying HTTP request payload parameters. If $key is not found $default value will be returned.
      *
-     * @param  string $key
+     * @param  string  $key
      * @param  mixed  $default
      * @return mixed
      */
@@ -93,8 +93,8 @@ class Request extends UtopiaRequest
      *
      * Method for querying server parameters. If $key is not found $default value will be returned.
      *
-     * @param string $key
-     * @param string|null  $default
+     * @param  string  $key
+     * @param  string|null  $default
      * @return string|null
      */
     public function getServer(string $key, string $default = null): ?string
@@ -148,7 +148,7 @@ class Request extends UtopiaRequest
      */
     public function getPort(): string
     {
-        return $this->getHeader('x-forwarded-port', (string)\parse_url($this->getProtocol() . '://' . $this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_PORT));
+        return $this->getHeader('x-forwarded-port', (string) \parse_url($this->getProtocol().'://'.$this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_PORT));
     }
 
     /**
@@ -160,7 +160,7 @@ class Request extends UtopiaRequest
      */
     public function getHostname(): string
     {
-        return \parse_url($this->getProtocol() . '://' . $this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_HOST);
+        return \parse_url($this->getProtocol().'://'.$this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_HOST);
     }
 
     /**
@@ -240,7 +240,7 @@ class Request extends UtopiaRequest
      *
      * Method for querying upload files data. If $key is not found empty array will be returned.
      *
-     * @param string $key
+     * @param  string  $key
      * @return array
      */
     public function getFiles($key): array
@@ -255,8 +255,8 @@ class Request extends UtopiaRequest
      *
      * Method for querying HTTP cookie parameters. If $key is not found $default value will be returned.
      *
-     * @param string $key
-     * @param string  $default
+     * @param  string  $key
+     * @param  string  $default
      * @return string
      */
     public function getCookie(string $key, string $default = ''): string
@@ -271,9 +271,9 @@ class Request extends UtopiaRequest
      *
      * Method for querying HTTP header parameters. If $key is not found $default value will be returned.
      *
-     * @param  string $key
-     * @param  string   $default
-     * @return string 
+     * @param  string  $key
+     * @param  string  $default
+     * @return string
      */
     public function getHeader(string $key, string $default = ''): string
     {
@@ -290,12 +290,12 @@ class Request extends UtopiaRequest
     protected function generateInput(): array
     {
         if (null === $this->payload) {
-            $contentType    = $this->getHeader('content-type');
+            $contentType = $this->getHeader('content-type');
 
             // Get content-type without the charset
-            $length         = strpos($contentType, ';');
-            $length         = (empty($length)) ? strlen($contentType) : $length;
-            $contentType    = substr($contentType, 0, $length);
+            $length = strpos($contentType, ';');
+            $length = (empty($length)) ? strlen($contentType) : $length;
+            $contentType = substr($contentType, 0, $length);
 
             switch ($contentType) {
                 case 'application/json':

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__.'/../../vendor/autoload.php';
 
 use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
@@ -16,7 +16,7 @@ ini_set('display_startup_errors', 1);
 ini_set('display_socket_timeout', -1);
 error_reporting(E_ALL);
 
-$http = new Server("0.0.0.0", App::getENV('PORT', 80));
+$http = new Server('0.0.0.0', App::getENV('PORT', 80));
 
 $payloadSize = max(4000000/* 4mb */, App::getEnv('_APP_STORAGE_LIMIT', 10000000/* 10mb */));
 
@@ -28,11 +28,10 @@ $http
         'package_max_length' => $payloadSize,
         'buffer_output_size' => $payloadSize,
         'worker_num' => 1,
-    ])
-;
+    ]);
 
 $http->on('WorkerStart', function ($serv, $workerId) {
-    echo 'Worker ' . ++$workerId . ' started succefully';
+    echo 'Worker '.++$workerId.' started succefully';
 });
 
 $http->on('BeforeReload', function ($serv, $workerId) {
@@ -44,7 +43,7 @@ $http->on('AfterReload', function ($serv, $workerId) {
 });
 
 $http->on('start', function (Server $http) use ($payloadSize) {
-    echo 'Server started succefully (max payload is ' . number_format($payloadSize) . ' bytes)';
+    echo 'Server started succefully (max payload is '.number_format($payloadSize).' bytes)';
 
     echo "Master pid {$http->master_pid}, manager pid {$http->manager_pid}";
 
@@ -65,7 +64,7 @@ App::get('/chunked')
     ->inject('response')
     ->action(function ($response) {
         /** @var Utopia/Swoole/Response $response */
-        foreach (["Hello ", "World!"] as $key => $word) {
+        foreach (['Hello ', 'World!'] as $key => $word) {
             $response->chunk($word, $key == 1);
         }
     });
@@ -95,13 +94,13 @@ $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swo
     try {
         $app->run($request, $response);
     } catch (\Throwable$th) {
-        echo '[Error] Type: ' . get_class($th);
-        echo '[Error] Message: ' . $th->getMessage();
-        echo '[Error] File: ' . $th->getFile();
-        echo '[Error] Line: ' . $th->getLine();
+        echo '[Error] Type: '.get_class($th);
+        echo '[Error] Message: '.$th->getMessage();
+        echo '[Error] File: '.$th->getFile();
+        echo '[Error] Line: '.$th->getLine();
 
         if (App::isDevelopment()) {
-            $swooleResponse->end('error: ' . $th->getMessage());
+            $swooleResponse->end('error: '.$th->getMessage());
         } else {
             $swooleResponse->end('500: Server Error');
         }

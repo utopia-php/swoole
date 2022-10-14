@@ -2,14 +2,14 @@
 
 namespace Utopia\Swoole;
 
-use Utopia\Response as UtopiaResponse;
 use Swoole\Http\Response as SwooleResponse;
+use Utopia\Response as UtopiaResponse;
 
 class Response extends UtopiaResponse
 {
     /**
      * Swoole Response Object
-     * 
+     *
      * @var SwooleResponse
      */
     protected $swoole;
@@ -25,9 +25,8 @@ class Response extends UtopiaResponse
 
     /**
      * Write
-     * 
-     * @param string $content
-     * 
+     *
+     * @param  string  $content
      * @return void
      */
     protected function write(string $content): void
@@ -38,8 +37,7 @@ class Response extends UtopiaResponse
     /**
      * End
      *
-     * @param string|null $content
-     *
+     * @param  string|null  $content
      * @return void
      */
     protected function end(string $content = null): void
@@ -49,9 +47,8 @@ class Response extends UtopiaResponse
 
     /**
      * Send Status Code
-     * 
-     * @param int $statusCode
-     * 
+     *
+     * @param  int  $statusCode
      * @return void
      */
     protected function sendStatus(int $statusCode): void
@@ -61,10 +58,9 @@ class Response extends UtopiaResponse
 
     /**
      * Send Header
-     * 
-     * @param string $key
-     * @param string $value
-     * 
+     *
+     * @param  string  $key
+     * @param  string  $value
      * @return void
      */
     protected function sendHeader(string $key, string $value): void
@@ -76,11 +72,10 @@ class Response extends UtopiaResponse
      * Send Cookie
      *
      * Send a cookie
-     * 
-     * @param string $name
-     * @param string $value
-     * @param array $options
      *
+     * @param  string  $name
+     * @param  string  $value
+     * @param  array  $options
      * @return void
      */
     protected function sendCookie(string $name, string $value, array $options): void
@@ -89,8 +84,8 @@ class Response extends UtopiaResponse
             name: $name,
             value: $value,
             expires: $options['expire'] ?? 0,
-            path: $options['path'] ?? "",
-            domain: $options['domain'] ?? "",
+            path: $options['path'] ?? '',
+            domain: $options['domain'] ?? '',
             secure: $options['secure'] ?? false,
             httponly: $options['httponly'] ?? false,
             samesite: $options['samesite'] ?? false,

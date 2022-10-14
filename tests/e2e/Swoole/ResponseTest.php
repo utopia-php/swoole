@@ -2,8 +2,8 @@
 
 namespace Utopia\Tests;
 
-use Tests\E2E\Client;
 use PHPUnit\Framework\TestCase;
+use Tests\E2E\Client;
 
 class ResponseTest extends TestCase
 {
@@ -43,7 +43,7 @@ class ResponseTest extends TestCase
             'http' => ['http'],
             'https' => ['https'],
             'ws' => ['ws'],
-            'wss' => ['wss']
+            'wss' => ['wss'],
         ];
     }
 
@@ -52,16 +52,16 @@ class ResponseTest extends TestCase
      */
     public function testCanForwardProtocolHeader(string $protocol): void
     {
-        $responseinvalid = $this->client->call(Client::METHOD_GET, '/protocol', array(
-            "x-forwarded-proto: {$protocol}"
-        ));
+        $responseinvalid = $this->client->call(Client::METHOD_GET, '/protocol', [
+            "x-forwarded-proto: {$protocol}",
+        ]);
         $this->assertEquals($protocol, $responseinvalid['body']);
     }
 
     public function testCantForwardUnknownProtocolHeader(): void
     {
         $responseinvalid = $this->client->call(Client::METHOD_GET, '/protocol', [
-            'x-forwarded-proto: randomjibberish'
+            'x-forwarded-proto: randomjibberish',
         ]);
         $this->assertEquals('https', $responseinvalid['body']);
     }
