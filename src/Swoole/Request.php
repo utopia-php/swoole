@@ -2,8 +2,8 @@
 
 namespace Utopia\Swoole;
 
-use Utopia\Request as UtopiaRequest;
 use Swoole\Http\Request as SwooleRequest;
+use Utopia\Request as UtopiaRequest;
 
 class Request extends UtopiaRequest
 {
@@ -39,8 +39,8 @@ class Request extends UtopiaRequest
      *
      * Method for querying server parameters. If $key is not found $default value will be returned.
      *
-     * @param string $key
-     * @param string|null  $default
+     * @param  string  $key
+     * @param  string|null  $default
      * @return string|null
      */
     public function getServer(string $key, string $default = null): ?string
@@ -53,8 +53,8 @@ class Request extends UtopiaRequest
      *
      * Method for setting server parameters.
      *
-     * @param string $key
-     * @param string $value
+     * @param  string  $key
+     * @param  string  $value
      * @return UtopiaRequest
      */
     public function setServer(string $key, string $value): UtopiaRequest
@@ -110,7 +110,7 @@ class Request extends UtopiaRequest
      */
     public function getPort(): string
     {
-        return $this->getHeader('x-forwarded-port', (string)\parse_url($this->getProtocol() . '://' . $this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_PORT));
+        return $this->getHeader('x-forwarded-port', (string) \parse_url($this->getProtocol().'://'.$this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_PORT));
     }
 
     /**
@@ -122,7 +122,7 @@ class Request extends UtopiaRequest
      */
     public function getHostname(): string
     {
-        return \parse_url($this->getProtocol() . '://' . $this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_HOST);
+        return \parse_url($this->getProtocol().'://'.$this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_HOST);
     }
 
     /**
@@ -142,7 +142,7 @@ class Request extends UtopiaRequest
      *
      * Set HTTP request method
      *
-     * @param string $method
+     * @param  string  $method
      * @return UtopiaRequest
      */
     public function setMethod(string $method): UtopiaRequest
@@ -169,7 +169,7 @@ class Request extends UtopiaRequest
      *
      * Set HTTP request URI
      *
-     * @param string $uri
+     * @param  string  $uri
      * @return UtopiaRequest
      */
     public function setURI(string $uri): UtopiaRequest
@@ -232,7 +232,7 @@ class Request extends UtopiaRequest
      *
      * Method for querying upload files data. If $key is not found empty array will be returned.
      *
-     * @param string $key
+     * @param  string  $key
      * @return array
      */
     public function getFiles($key): array
@@ -247,8 +247,8 @@ class Request extends UtopiaRequest
      *
      * Method for querying HTTP cookie parameters. If $key is not found $default value will be returned.
      *
-     * @param string $key
-     * @param string  $default
+     * @param  string  $key
+     * @param  string  $default
      * @return string
      */
     public function getCookie(string $key, string $default = ''): string
@@ -263,9 +263,9 @@ class Request extends UtopiaRequest
      *
      * Method for querying HTTP header parameters. If $key is not found $default value will be returned.
      *
-     * @param  string $key
-     * @param  string   $default
-     * @return string 
+     * @param  string  $key
+     * @param  string  $default
+     * @return string
      */
     public function getHeader(string $key, string $default = ''): string
     {
@@ -275,8 +275,8 @@ class Request extends UtopiaRequest
     /**
      * Method for adding HTTP header parameters.
      *
-     * @param string $key
-     * @param string $value
+     * @param  string  $key
+     * @param  string  $value
      * @return void
      */
     public function addHeader(string $key, string $value): void
@@ -287,7 +287,7 @@ class Request extends UtopiaRequest
     /**
      * Method for removing HTTP header parameters.
      *
-     * @param string $key
+     * @param  string  $key
      * @return void
      */
     public function removeHeader(string $key): void
@@ -310,12 +310,12 @@ class Request extends UtopiaRequest
             $this->queryString = $this->swoole->get;
         }
         if (null === $this->payload) {
-            $contentType    = $this->getHeader('content-type');
+            $contentType = $this->getHeader('content-type');
 
             // Get content-type without the charset
-            $length         = strpos($contentType, ';');
-            $length         = (empty($length)) ? strlen($contentType) : $length;
-            $contentType    = substr($contentType, 0, $length);
+            $length = strpos($contentType, ';');
+            $length = (empty($length)) ? strlen($contentType) : $length;
+            $contentType = substr($contentType, 0, $length);
 
             switch ($contentType) {
                 case 'application/json':

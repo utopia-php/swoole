@@ -2,14 +2,14 @@
 
 namespace Utopia\Tests;
 
-use Utopia\Swoole\Files;
 use PHPUnit\Framework\TestCase;
+use Utopia\Swoole\Files;
 
 class FilesTest extends TestCase
 {
     public function setUp(): void
     {
-        Files::load(__DIR__ . '/../resources');
+        Files::load(__DIR__.'/../resources');
     }
 
     public function tearDown(): void
@@ -25,7 +25,7 @@ class FilesTest extends TestCase
     public function testCanIgnoreDuplicateFilesWhenLoading(): void
     {
         $this->assertEquals(11, Files::getCount());
-        Files::load(__DIR__ . '/../resources');
+        Files::load(__DIR__.'/../resources');
         $this->assertEquals(11, Files::getCount());
     }
 
