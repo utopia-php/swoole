@@ -23,71 +23,9 @@ class Request extends UtopiaRequest
     }
 
     /**
-     * Get param by current method name.
      *
-     * @param string $key
-     * @param mixed $default
-     * @return mixed
+     *
      */
-    public function getParam(string $key, mixed $default = null): mixed
-    {
-        return match ($this->getMethod()) {
-            self::METHOD_POST,
-            self::METHOD_PUT,
-            self::METHOD_PATCH,
-            self::METHOD_DELETE => $this->getPayload($key, $default),
-            default => $this->getQuery($key, $default)
-        };
-    }
-
-    /**
-     * Get Params
-     *
-     * Get all params of current method
-     *
-     * @return array
-     */
-    public function getParams(): array
-    {
-        return match ($this->getMethod()) {
-            self::METHOD_POST,
-            self::METHOD_PUT,
-            self::METHOD_PATCH,
-            self::METHOD_DELETE => $this->generateInput(),
-            default => $this->swoole->get ?? []
-        };
-    }
-
-    /**
-     * Get Query
-     *
-     * Method for querying HTTP GET request parameters. If $key is not found $default value will be returned.
-     *
-     * @param  string $key
-     * @param  mixed  $default
-     * @return mixed
-     */
-    public function getQuery(string $key, mixed $default = null): mixed
-    {
-        return $this->swoole->get[$key] ?? $default;
-    }
-
-    /**
-     * Get payload
-     *
-     * Method for querying HTTP request payload parameters. If $key is not found $default value will be returned.
-     *
-     * @param  string $key
-     * @param  mixed  $default
-     * @return mixed
-     */
-    public function getPayload(string $key, $default = null): mixed
-    {
-        $payload = $this->generateInput();
-
-        return $payload[$key] ?? $default;
-    }
-
     public function getRawPayload(): string
     {
         return $this->swoole->rawContent();
@@ -329,28 +267,6 @@ class Request extends UtopiaRequest
         if (isset($this->swoole->header[$key])) {
             unset($this->swoole->header[$key]);
         }
-    }
-
-    /**
-     * Method for setting GET parameters.
-     *
-     * @param array $params
-     * @return void
-     */
-    public function setGet(array $params): void
-    {
-        $this->swoole->get = $params;
-    }
-
-    /**
-     * Method for setting POST parameters.
-     *
-     * @param array $params
-     * @return void
-     */
-    public function setPost(array $params): void
-    {
-        $this->swoole->post = $params;
     }
 
     /**
