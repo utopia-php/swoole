@@ -307,7 +307,7 @@ class Request extends UtopiaRequest
     protected function generateInput(): array
     {
         if (null === $this->queryString) {
-            $this->queryString = $this->swoole->get;
+            $this->queryString = $this->swoole->get ?? [];
         }
         if (null === $this->payload) {
             $contentType = $this->getHeader('content-type');
