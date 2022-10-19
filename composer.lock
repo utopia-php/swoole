@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "460033156ed5bc2662def3e86e9454d7",
+    "content-hash": "c0b01496fbfb683946a79cf3159ea932",
     "packages": [
         {
             "name": "utopia-php/framework",
-            "version": "0.22.1",
+            "version": "0.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/utopia-php/framework.git",
-                "reference": "9f35d36ed4b8fa1c92962c77ef02b49c2f5919df"
+                "reference": "d595df075aa9ee46147a388c63064b03aeeac466"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/framework/zipball/9f35d36ed4b8fa1c92962c77ef02b49c2f5919df",
-                "reference": "9f35d36ed4b8fa1c92962c77ef02b49c2f5919df",
+                "url": "https://api.github.com/repos/utopia-php/framework/zipball/d595df075aa9ee46147a388c63064b03aeeac466",
+                "reference": "d595df075aa9ee46147a388c63064b03aeeac466",
                 "shasum": ""
             },
             "require": {
@@ -37,12 +37,6 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Eldad Fux",
-                    "email": "eldad@appwrite.io"
-                }
-            ],
             "description": "A simple, light and advanced PHP framework",
             "keywords": [
                 "framework",
@@ -51,9 +45,9 @@
             ],
             "support": {
                 "issues": "https://github.com/utopia-php/framework/issues",
-                "source": "https://github.com/utopia-php/framework/tree/0.22.1"
+                "source": "https://github.com/utopia-php/framework/tree/0.23.1"
             },
-            "time": "2022-10-07T14:51:40+00:00"
+            "time": "2022-10-19T10:35:44+00:00"
         }
     ],
     "packages-dev": [
@@ -729,16 +723,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "dev-main",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "8f034a91ef2da8693d4a7199372df45fbc7ec144"
+                "reference": "1d276e4c803397a26cc337df908f55c2a4e90d86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/8f034a91ef2da8693d4a7199372df45fbc7ec144",
-                "reference": "8f034a91ef2da8693d4a7199372df45fbc7ec144",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/1d276e4c803397a26cc337df908f55c2a4e90d86",
+                "reference": "1d276e4c803397a26cc337df908f55c2a4e90d86",
                 "shasum": ""
             },
             "require": {
@@ -750,14 +744,13 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.11.0",
-                "illuminate/view": "^9.32.0",
-                "laravel-zero/framework": "^9.2.0",
-                "mockery/mockery": "^1.5.1",
-                "nunomaduro/larastan": "^2.2.0",
+                "illuminate/view": "^9.27",
+                "laravel-zero/framework": "^9.1.3",
+                "mockery/mockery": "^1.5.0",
+                "nunomaduro/larastan": "^2.2",
                 "nunomaduro/termwind": "^1.14.0",
                 "pestphp/pest": "^1.22.1"
             },
-            "default-branch": true,
             "bin": [
                 "builds/pint"
             ],
@@ -792,7 +785,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2022-09-29T12:05:27+00:00"
+            "time": "2022-09-13T15:07:15+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1255,12 +1248,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "b84eadb189e2b0586d50e4acd202ddbe2321c742"
+                "reference": "48f445a408c131e38cab1c235aa6d2bb7a0bb20d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/b84eadb189e2b0586d50e4acd202ddbe2321c742",
-                "reference": "b84eadb189e2b0586d50e4acd202ddbe2321c742",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/48f445a408c131e38cab1c235aa6d2bb7a0bb20d",
+                "reference": "48f445a408c131e38cab1c235aa6d2bb7a0bb20d",
                 "shasum": ""
             },
             "require": {
@@ -1301,9 +1294,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.x"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.6.2"
             },
-            "time": "2022-07-29T17:55:23+00:00"
+            "time": "2022-10-14T12:47:21+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1311,12 +1304,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "c0c5c1c0e3a0aec88a74b6fcffd359d095192be4"
+                "reference": "8be4d431796da1afc21bd9d11b73105f17b3522b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c0c5c1c0e3a0aec88a74b6fcffd359d095192be4",
-                "reference": "c0c5c1c0e3a0aec88a74b6fcffd359d095192be4",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/8be4d431796da1afc21bd9d11b73105f17b3522b",
+                "reference": "8be4d431796da1afc21bd9d11b73105f17b3522b",
                 "shasum": ""
             },
             "require": {
@@ -1380,7 +1373,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-10-13T05:15:14+00:00"
+            "time": "2022-10-17T06:29:29+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1629,12 +1622,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b24fb30d50d8ef4c97f5e9be3132c0a96a16e5c5"
+                "reference": "7847a4a920f686db261da1ccc92120800822661f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b24fb30d50d8ef4c97f5e9be3132c0a96a16e5c5",
-                "reference": "b24fb30d50d8ef4c97f5e9be3132c0a96a16e5c5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7847a4a920f686db261da1ccc92120800822661f",
+                "reference": "7847a4a920f686db261da1ccc92120800822661f",
                 "shasum": ""
             },
             "require": {
@@ -1723,7 +1716,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-13T05:08:36+00:00"
+            "time": "2022-10-19T10:44:50+00:00"
         },
         {
             "name": "psr/container",
@@ -2842,12 +2835,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "a6967676ca56c6fc4bf68a86412dab7530ea5b48"
+                "reference": "53399d9eb0c6438d2261dfc4b8e02f450e52043c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a6967676ca56c6fc4bf68a86412dab7530ea5b48",
-                "reference": "a6967676ca56c6fc4bf68a86412dab7530ea5b48",
+                "url": "https://api.github.com/repos/symfony/console/zipball/53399d9eb0c6438d2261dfc4b8e02f450e52043c",
+                "reference": "53399d9eb0c6438d2261dfc4b8e02f450e52043c",
                 "shasum": ""
             },
             "require": {
@@ -2930,7 +2923,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-09T22:09:52+00:00"
+            "time": "2022-10-18T13:21:06+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3426,12 +3419,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "a97632a527ba2e699a978bc5d7da3d2320e6a677"
+                "reference": "5d8211c95d9a0d913a0ccb02e932c8268ae9d3d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/a97632a527ba2e699a978bc5d7da3d2320e6a677",
-                "reference": "a97632a527ba2e699a978bc5d7da3d2320e6a677",
+                "url": "https://api.github.com/repos/symfony/string/zipball/5d8211c95d9a0d913a0ccb02e932c8268ae9d3d3",
+                "reference": "5d8211c95d9a0d913a0ccb02e932c8268ae9d3d3",
                 "shasum": ""
             },
             "require": {
@@ -3504,7 +3497,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-10T09:34:55+00:00"
+            "time": "2022-10-17T20:01:40+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -3775,9 +3768,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "laravel/pint": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
@@ -3785,5 +3776,5 @@
         "ext-swoole": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
