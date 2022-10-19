@@ -55,9 +55,9 @@ class Request extends UtopiaRequest
      *
      * @param  string  $key
      * @param  string  $value
-     * @return UtopiaRequest
+     * @return static
      */
-    public function setServer(string $key, string $value): UtopiaRequest
+    public function setServer(string $key, string $value): static
     {
         $this->swoole->server[$key] = $value;
 
@@ -143,9 +143,9 @@ class Request extends UtopiaRequest
      * Set HTTP request method
      *
      * @param  string  $method
-     * @return UtopiaRequest
+     * @return static
      */
-    public function setMethod(string $method): UtopiaRequest
+    public function setMethod(string $method): static
     {
         $this->setServer('request_method', $method);
 
@@ -170,9 +170,9 @@ class Request extends UtopiaRequest
      * Set HTTP request URI
      *
      * @param  string  $uri
-     * @return UtopiaRequest
+     * @return static
      */
-    public function setURI(string $uri): UtopiaRequest
+    public function setURI(string $uri): static
     {
         $this->setServer('request_uri', $uri);
 
@@ -277,24 +277,28 @@ class Request extends UtopiaRequest
      *
      * @param  string  $key
      * @param  string  $value
-     * @return void
+     * @return static
      */
-    public function addHeader(string $key, string $value): void
+    public function addHeader(string $key, string $value): static
     {
         $this->swoole->header[$key] = $value;
+
+        return $this;
     }
 
     /**
      * Method for removing HTTP header parameters.
      *
      * @param  string  $key
-     * @return void
+     * @return static
      */
-    public function removeHeader(string $key): void
+    public function removeHeader(string $key): static
     {
         if (isset($this->swoole->header[$key])) {
             unset($this->swoole->header[$key]);
         }
+
+        return $this;
     }
 
     /**
