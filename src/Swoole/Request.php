@@ -23,8 +23,11 @@ class Request extends UtopiaRequest
     }
 
     /**
+     * Get raw payload
      *
+     * Method for getting the HTTP request payload as a raw string.
      *
+     * @return string
      */
     public function getRawPayload(): string
     {
@@ -45,6 +48,15 @@ class Request extends UtopiaRequest
         return $this->swoole->server[$key] ?? $default;
     }
 
+    /**
+     * Set server
+     *
+     * Method for setting server parameters.
+     *
+     * @param string $key
+     * @param string $value
+     * @return UtopiaRequest
+     */
     public function setServer(string $key, string $value): UtopiaRequest
     {
         $this->swoole->server[$key] = $value;
@@ -125,6 +137,14 @@ class Request extends UtopiaRequest
         return $this->getServer('request_method') ?? 'UNKNOWN';
     }
 
+    /**
+     * Set method
+     *
+     * Set HTTP request method
+     *
+     * @param string $method
+     * @return UtopiaRequest
+     */
     public function setMethod(string $method): UtopiaRequest
     {
         $this->setServer('request_method', $method);
@@ -144,6 +164,14 @@ class Request extends UtopiaRequest
         return $this->getServer('request_uri') ?? '';
     }
 
+    /**
+     * Set URI
+     *
+     * Set HTTP request URI
+     *
+     * @param string $uri
+     * @return UtopiaRequest
+     */
     public function setURI(string $uri): UtopiaRequest
     {
         $this->setServer('request_uri', $uri);
@@ -251,7 +279,7 @@ class Request extends UtopiaRequest
      * @param string $value
      * @return void
      */
-    public function setHeader(string $key, string $value): void
+    public function addHeader(string $key, string $value): void
     {
         $this->swoole->header[$key] = $value;
     }
@@ -278,6 +306,9 @@ class Request extends UtopiaRequest
      */
     protected function generateInput(): array
     {
+        if (null === $this->queryString) {
+            $this->queryString = $this->swoole->get;
+        }
         if (null === $this->payload) {
             $contentType    = $this->getHeader('content-type');
 
@@ -301,7 +332,13 @@ class Request extends UtopiaRequest
             }
         }
 
-        return $this->payload;
+        return match ($this->getMethod()) {
+            self::METHOD_POST,
+            self::METHOD_PUT,
+            self::METHOD_PATCH,
+            self::METHOD_DELETE => $this->payload,
+            default => $this->queryString
+        };
     }
 
     /**
