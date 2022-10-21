@@ -37,6 +37,9 @@ class ResponseTest extends TestCase
         $this->assertEquals('Hello World!', $response['body']);
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function providerForwardProtocolHeader(): array
     {
         return [

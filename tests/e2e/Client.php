@@ -45,9 +45,9 @@ class Client
      *
      * @param  string  $method
      * @param  string  $path
-     * @param  array  $params
-     * @param  array  $headers
-     * @return array|string
+     * @param  array<string, mixed>  $params
+     * @param  array<int, string>  $headers
+     * @return array<string, mixed>
      *
      * @throws Exception
      */

@@ -16,9 +16,9 @@ ini_set('display_startup_errors', 1);
 ini_set('display_socket_timeout', -1);
 error_reporting(E_ALL);
 
-$http = new Server('0.0.0.0', App::getENV('PORT', 80));
+$http = new Server('0.0.0.0', App::getENV('PORT', '80'));
 
-$payloadSize = max(4000000/* 4mb */, App::getEnv('_APP_STORAGE_LIMIT', 10000000/* 10mb */));
+$payloadSize = max('4000000'/* 4mb */, App::getEnv('_APP_STORAGE_LIMIT', '10000000'/* 10mb */));
 
 $http
     ->set([
@@ -43,7 +43,7 @@ $http->on('AfterReload', function ($serv, $workerId) {
 });
 
 $http->on('start', function (Server $http) use ($payloadSize) {
-    echo 'Server started succefully (max payload is '.number_format($payloadSize).' bytes)';
+    echo 'Server started succefully (max payload is '.number_format((float)$payloadSize).' bytes)';
 
     echo "Master pid {$http->master_pid}, manager pid {$http->manager_pid}";
 
@@ -63,7 +63,7 @@ App::get('/')
 App::get('/chunked')
     ->inject('response')
     ->action(function ($response) {
-        /** @var Utopia/Swoole/Response $response */
+        // /** @var Utopia/Swoole/Response $response */
         foreach (['Hello ', 'World!'] as $key => $word) {
             $response->chunk($word, $key == 1);
         }
@@ -72,7 +72,7 @@ App::get('/chunked')
 App::get('/redirect')
     ->inject('response')
     ->action(function ($response) {
-        /** @var Utopia/Swoole/Response $response */
+        // /** @var Utopia/Swoole/Response $response */
         $response->redirect('/');
     });
 
@@ -80,8 +80,8 @@ App::get('/protocol')
     ->inject('request')
     ->inject('response')
     ->action(function ($request, $response) {
-        /** @var Utopia/Swoole/Response $response */
-        /** @var Utopia/Swoole/Request $request */
+        // /** @var Utopia/Swoole/Response $response */
+        // /** @var Utopia/Swoole/Request $request */
         $response->send($request->getProtocol());
     });
 

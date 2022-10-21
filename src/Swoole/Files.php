@@ -93,7 +93,7 @@ class Files
 
         $root ??= $directory;
 
-        $handle = opendir($directory);
+        $handle = opendir(strval($directory));
 
         while ($path = readdir($handle)) {
             $extension = pathinfo($path, PATHINFO_EXTENSION);
@@ -113,12 +113,12 @@ class Files
             $dirPath = $directory.'/'.$path;
 
             if (is_dir($dirPath)) {
-                self::load($dirPath, $root);
+                self::load($dirPath, strval($root));
 
                 continue;
             }
 
-            $key = substr($dirPath, strlen($root));
+            $key = substr($dirPath, strlen(strval($root)));
 
             if (array_key_exists($key, self::$loaded)) {
                 continue;
