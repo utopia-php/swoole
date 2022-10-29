@@ -23,69 +23,15 @@ class Request extends UtopiaRequest
     }
 
     /**
-     * Get param by current method name.
+     * Get raw payload
      *
-     * @param  string  $key
-     * @param  mixed  $default
-     * @return mixed
+     * Method for getting the HTTP request payload as a raw string.
+     *
+     * @return string
      */
-    public function getParam(string $key, mixed $default = null): mixed
+    public function getRawPayload(): string
     {
-        return match ($this->getMethod()) {
-            self::METHOD_POST,
-            self::METHOD_PUT,
-            self::METHOD_PATCH,
-            self::METHOD_DELETE => $this->getPayload($key, $default),
-            default => $this->getQuery($key, $default)
-        };
-    }
-
-    /**
-     * Get Params
-     *
-     * Get all params of current method
-     *
-     * @return array<string, mixed>
-     */
-    public function getParams(): array
-    {
-        return match ($this->getMethod()) {
-            self::METHOD_POST,
-            self::METHOD_PUT,
-            self::METHOD_PATCH,
-            self::METHOD_DELETE => $this->generateInput(),
-            default => $this->swoole->get ?? []
-        };
-    }
-
-    /**
-     * Get Query
-     *
-     * Method for querying HTTP GET request parameters. If $key is not found $default value will be returned.
-     *
-     * @param  string  $key
-     * @param  mixed  $default
-     * @return mixed
-     */
-    public function getQuery(string $key, mixed $default = null): mixed
-    {
-        return $this->swoole->get[$key] ?? $default;
-    }
-
-    /**
-     * Get payload
-     *
-     * Method for querying HTTP request payload parameters. If $key is not found $default value will be returned.
-     *
-     * @param  string  $key
-     * @param  mixed  $default
-     * @return mixed
-     */
-    public function getPayload(string $key, $default = null): mixed
-    {
-        $payload = $this->generateInput();
-
-        return $payload[$key] ?? $default;
+        return $this->swoole->rawContent();
     }
 
     /**
@@ -100,6 +46,22 @@ class Request extends UtopiaRequest
     public function getServer(string $key, string $default = null): ?string
     {
         return $this->swoole->server[$key] ?? $default;
+    }
+
+    /**
+     * Set server
+     *
+     * Method for setting server parameters.
+     *
+     * @param  string  $key
+     * @param  string  $value
+     * @return static
+     */
+    public function setServer(string $key, string $value): static
+    {
+        $this->swoole->server[$key] = $value;
+
+        return $this;
     }
 
     /**
@@ -176,6 +138,21 @@ class Request extends UtopiaRequest
     }
 
     /**
+     * Set method
+     *
+     * Set HTTP request method
+     *
+     * @param  string  $method
+     * @return static
+     */
+    public function setMethod(string $method): static
+    {
+        $this->setServer('request_method', $method);
+
+        return $this;
+    }
+
+    /**
      * Get URI
      *
      * Return HTTP request URI
@@ -185,6 +162,21 @@ class Request extends UtopiaRequest
     public function getURI(): string
     {
         return $this->getServer('request_uri') ?? '';
+    }
+
+    /**
+     * Set URI
+     *
+     * Set HTTP request URI
+     *
+     * @param  string  $uri
+     * @return static
+     */
+    public function setURI(string $uri): static
+    {
+        $this->setServer('request_uri', $uri);
+
+        return $this;
     }
 
     /**
@@ -281,6 +273,35 @@ class Request extends UtopiaRequest
     }
 
     /**
+     * Method for adding HTTP header parameters.
+     *
+     * @param  string  $key
+     * @param  string  $value
+     * @return static
+     */
+    public function addHeader(string $key, string $value): static
+    {
+        $this->swoole->header[$key] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Method for removing HTTP header parameters.
+     *
+     * @param  string  $key
+     * @return static
+     */
+    public function removeHeader(string $key): static
+    {
+        if (isset($this->swoole->header[$key])) {
+            unset($this->swoole->header[$key]);
+        }
+
+        return $this;
+    }
+
+    /**
      * Generate input
      *
      * Generate PHP input stream and parse it as an array in order to handle different content type of requests
@@ -289,6 +310,9 @@ class Request extends UtopiaRequest
      */
     protected function generateInput(): array
     {
+        if (null === $this->queryString) {
+            $this->queryString = $this->swoole->get ?? [];
+        }
         if (null === $this->payload) {
             $contentType = $this->getHeader('content-type');
 
@@ -312,7 +336,13 @@ class Request extends UtopiaRequest
             }
         }
 
-        return $this->payload;
+        return match ($this->getMethod()) {
+            self::METHOD_POST,
+            self::METHOD_PUT,
+            self::METHOD_PATCH,
+            self::METHOD_DELETE => $this->payload,
+            default => $this->queryString
+        };
     }
 
     /**
