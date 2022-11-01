@@ -64,7 +64,7 @@ App::get('/headers')
     ->inject('request')
     ->inject('response')
     ->action(function ($request, $response) {
-        $response->json([ 'headers' => $request->getHeaders() ]);
+        $response->json(['headers' => $request->getHeaders()]);
     });
 
 App::get('/chunked')
