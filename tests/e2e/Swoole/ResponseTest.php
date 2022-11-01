@@ -65,4 +65,15 @@ class ResponseTest extends TestCase
         ]);
         $this->assertEquals('https', $responseinvalid['body']);
     }
+
+    public function testRequestHeaders(): void
+    {
+        $response = $this->client->call(Client::METHOD_GET, '/headers', [
+            'x-test-header: developers-are-awesome',
+        ]);
+
+        $body = \json_decode($response['body'], true);
+
+        $this->assertEquals('developers-are-awesome', $body['headers']['x-test-header']);
+    }
 }

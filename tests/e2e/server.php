@@ -60,6 +60,13 @@ App::get('/')
         $response->send('Hello World!');
     });
 
+App::get('/headers')
+    ->inject('request')
+    ->inject('response')
+    ->action(function ($request, $response) {
+        $response->json([ 'headers' => $request->getHeaders() ]);
+    });
+
 App::get('/chunked')
     ->inject('response')
     ->action(function ($response) {
