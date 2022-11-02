@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "768bd03c047f4cbc0a606803d2734f08",
+    "content-hash": "7e45abd8e6858cdaa194c4073931da22",
     "packages": [
         {
             "name": "utopia-php/framework",
-            "version": "0.24.0",
+            "version": "dev-feat-wildcard-route",
             "source": {
                 "type": "git",
                 "url": "https://github.com/utopia-php/framework.git",
-                "reference": "8f55a8fb1bbd57c93de9ea308eb9d01618739c17"
+                "reference": "d7aed08fb9d830566a6111a706c000ab05aaace7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/framework/zipball/8f55a8fb1bbd57c93de9ea308eb9d01618739c17",
-                "reference": "8f55a8fb1bbd57c93de9ea308eb9d01618739c17",
+                "url": "https://api.github.com/repos/utopia-php/framework/zipball/d7aed08fb9d830566a6111a706c000ab05aaace7",
+                "reference": "d7aed08fb9d830566a6111a706c000ab05aaace7",
                 "shasum": ""
             },
             "require": {
@@ -45,9 +45,9 @@
             ],
             "support": {
                 "issues": "https://github.com/utopia-php/framework/issues",
-                "source": "https://github.com/utopia-php/framework/tree/0.24.0"
+                "source": "https://github.com/utopia-php/framework/tree/feat-wildcard-route"
             },
-            "time": "2022-11-01T13:06:29+00:00"
+            "time": "2022-11-02T04:51:36+00:00"
         }
     ],
     "packages-dev": [
@@ -3767,9 +3767,18 @@
             "time": "2021-11-08T08:17:20+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "utopia-php/framework",
+            "version": "dev-feat-wildcard-route",
+            "alias": "0.24.0",
+            "alias_normalized": "0.24.0.0"
+        }
+    ],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "utopia-php/framework": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
