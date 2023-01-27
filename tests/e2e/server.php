@@ -43,7 +43,7 @@ $http->on('AfterReload', function ($serv, $workerId) {
 });
 
 $http->on('start', function (Server $http) use ($payloadSize) {
-    echo 'Server started succefully (max payload is '.number_format((float)$payloadSize).' bytes)';
+    echo 'Server started succefully (max payload is '.number_format((float) $payloadSize).' bytes)';
 
     echo "Master pid {$http->master_pid}, manager pid {$http->manager_pid}";
 
