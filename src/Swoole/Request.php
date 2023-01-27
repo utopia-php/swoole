@@ -273,6 +273,18 @@ class Request extends UtopiaRequest
     }
 
     /**
+     * Get headers
+     *
+     * Method for getting all HTTP header parameters.
+     *
+     * @return array<string,mixed>
+     */
+    public function getHeaders(): array
+    {
+        return $this->generateHeaders();
+    }
+
+    /**
      * Method for adding HTTP header parameters.
      *
      * @param  string  $key
