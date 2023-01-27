@@ -122,7 +122,7 @@ class Request extends UtopiaRequest
      */
     public function getHostname(): string
     {
-        return \parse_url($this->getProtocol().'://'.$this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_HOST);
+        return strval(\parse_url($this->getProtocol().'://'.$this->getHeader('x-forwarded-host', $this->getHeader('host')), PHP_URL_HOST));
     }
 
     /**
@@ -233,7 +233,7 @@ class Request extends UtopiaRequest
      * Method for querying upload files data. If $key is not found empty array will be returned.
      *
      * @param  string  $key
-     * @return array
+     * @return array<string, mixed>
      */
     public function getFiles($key): array
     {
@@ -318,7 +318,7 @@ class Request extends UtopiaRequest
      *
      * Generate PHP input stream and parse it as an array in order to handle different content type of requests
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function generateInput(): array
     {
@@ -335,7 +335,7 @@ class Request extends UtopiaRequest
 
             switch ($contentType) {
                 case 'application/json':
-                    $this->payload = json_decode($this->swoole->rawContent(), true);
+                    $this->payload = json_decode(strval($this->swoole->rawContent()), true);
                     break;
 
                 default:
@@ -362,7 +362,7 @@ class Request extends UtopiaRequest
      *
      * Parse request headers as an array for easy querying using the getHeader method
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function generateHeaders(): array
     {

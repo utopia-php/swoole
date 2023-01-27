@@ -7,7 +7,7 @@ use Exception;
 class Files
 {
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected static array $loaded = [];
 
@@ -17,12 +17,12 @@ class Files
     protected static int $count = 0;
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected static array $mimeTypes = [];
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     const EXTENSIONS = [
         'css' => 'text/css',
@@ -57,7 +57,7 @@ class Files
     /**
      * Get MimeType List
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public static function getMimeTypes(): array
     {
@@ -93,7 +93,7 @@ class Files
 
         $root ??= $directory;
 
-        $handle = opendir($directory);
+        $handle = opendir(strval($directory));
 
         while ($path = readdir($handle)) {
             $extension = pathinfo($path, PATHINFO_EXTENSION);
@@ -113,12 +113,12 @@ class Files
             $dirPath = $directory.'/'.$path;
 
             if (is_dir($dirPath)) {
-                self::load($dirPath, $root);
+                self::load($dirPath, strval($root));
 
                 continue;
             }
 
-            $key = substr($dirPath, strlen($root));
+            $key = substr($dirPath, strlen(strval($root)));
 
             if (array_key_exists($key, self::$loaded)) {
                 continue;
@@ -160,7 +160,7 @@ class Files
      *
      * @throws \Exception
      */
-    public static function getFileContents(string $uri): string
+    public static function getFileContents(string $uri): mixed
     {
         if (! array_key_exists($uri, self::$loaded)) {
             throw new Exception('File not found or not loaded: '.$uri);
@@ -177,7 +177,7 @@ class Files
      *
      * @throws \Exception
      */
-    public static function getFileMimeType(string $uri): string
+    public static function getFileMimeType(string $uri): mixed
     {
         if (! array_key_exists($uri, self::$loaded)) {
             throw new Exception('File not found or not loaded: '.$uri);
