@@ -15,7 +15,7 @@
     "require": {
         "php": ">=8.0",
         "ext-swoole": "*",
-        "utopia-php/framework": "0.25.*"
+        "utopia-php/framework": "0.28.*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3",
