@@ -53,7 +53,6 @@ COPY --from=step1 /usr/local/lib/php/extensions/no-debug-non-zts-20200930/swoole
 # Add Source Code
 COPY ./src /code/src
 COPY ./phpunit.xml /code/
-COPY ./psalm.xml /code/
 
 
 # Enable Extensions
