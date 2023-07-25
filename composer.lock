@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eaac721c99870c78bb97ab1caba2b60e",
+    "content-hash": "d7ab300398bd70ef8fa243c78e5a2cbc",
     "packages": [
         {
             "name": "utopia-php/framework",
@@ -2953,16 +2953,16 @@
         },
         {
             "name": "swoole/ide-helper",
-            "version": "4.8.3",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swoole/ide-helper.git",
-                "reference": "3ac4971814273889933b871e03b2a6b340e58f79"
+                "reference": "939352ede9e8cddce96897d18b4fbd0c1e2110a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/3ac4971814273889933b871e03b2a6b340e58f79",
-                "reference": "3ac4971814273889933b871e03b2a6b340e58f79",
+                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/939352ede9e8cddce96897d18b4fbd0c1e2110a3",
+                "reference": "939352ede9e8cddce96897d18b4fbd0c1e2110a3",
                 "shasum": ""
             },
             "type": "library",
@@ -2979,7 +2979,7 @@
             "description": "IDE help files for Swoole.",
             "support": {
                 "issues": "https://github.com/swoole/ide-helper/issues",
-                "source": "https://github.com/swoole/ide-helper/tree/4.8.3"
+                "source": "https://github.com/swoole/ide-helper/tree/5.0.0"
             },
             "funding": [
                 {
@@ -2991,7 +2991,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-01T08:11:40+00:00"
+            "time": "2022-08-10T05:32:06+00:00"
         },
         {
             "name": "symfony/console",
