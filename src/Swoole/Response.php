@@ -12,7 +12,7 @@ class Response extends UtopiaResponse
      *
      * @var SwooleResponse
      */
-    protected $swoole;
+    protected SwooleResponse $swoole;
 
     /**
      * Response constructor.

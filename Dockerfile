@@ -8,9 +8,9 @@ COPY ./composer.lock /src/
 RUN composer install --ignore-platform-reqs --optimize-autoloader \
     --no-plugins --no-scripts --prefer-dist
 
-FROM php:8.0-cli-alpine as step1
+FROM php:8.0.18-cli-alpine3.15 as step1
 
-ENV PHP_SWOOLE_VERSION=v4.8.3
+ENV PHP_SWOOLE_VERSION=v5.0.2
 
 RUN \
   apk add --no-cache --virtual .deps \
@@ -19,7 +19,8 @@ RUN \
   autoconf \
   gcc \
   g++ \
-  git
+  git \
+  zlib-dev
 
 RUN \
   ## Swoole Extension
@@ -52,7 +53,6 @@ COPY --from=step1 /usr/local/lib/php/extensions/no-debug-non-zts-20200930/swoole
 # Add Source Code
 COPY ./src /code/src
 COPY ./phpunit.xml /code/
-COPY ./psalm.xml /code/
 
 
 # Enable Extensions

@@ -10,19 +10,18 @@
     "scripts": {
         "lint": "./vendor/bin/pint --test",
         "format": "./vendor/bin/pint",
-        "check": "./vendor/bin/phpstan analyse --level 6 src tests"
+        "check": "./vendor/bin/phpstan analyse --level 6 src tests --memory-limit 512M"
     },
     "require": {
         "php": ">=8.0",
         "ext-swoole": "*",
-        "utopia-php/framework": "0.25.*"
+        "utopia-php/framework": "0.28.*"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3",
-        "vimeo/psalm": "4.15.0",
-        "swoole/ide-helper": "4.8.3",
+        "swoole/ide-helper": "5.0.2",
         "laravel/pint": "1.2.*",
-        "phpstan/phpstan": "1.9.x-dev"
+        "phpstan/phpstan": "^1.10"
     },
     "minimum-stability": "dev"
 }
