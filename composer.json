@@ -21,7 +21,7 @@
         "phpunit/phpunit": "^9.3",
         "swoole/ide-helper": "5.0.0",
         "laravel/pint": "1.2.*",
-        "phpstan/phpstan": "1.9.x-dev"
+        "phpstan/phpstan": "1.10.26"
     },
     "minimum-stability": "dev"
 }
