@@ -2,6 +2,7 @@ version: '3'
 
 services:
     php:
+        image: swoole-dev
         build:
             context: .
         ports:
