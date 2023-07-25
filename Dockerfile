@@ -10,7 +10,7 @@ RUN composer install --ignore-platform-reqs --optimize-autoloader \
 
 FROM php:8.0.18-cli-alpine3.15 as step1
 
-ENV PHP_SWOOLE_VERSION=v5.0.0
+ENV PHP_SWOOLE_VERSION=v5.0.2
 
 RUN \
   apk add --no-cache --virtual .deps \

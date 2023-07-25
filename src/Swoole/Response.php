@@ -12,7 +12,7 @@ class Response extends UtopiaResponse
      *
      * @var SwooleResponse
      */
-    protected $swoole;
+    protected SwooleResponse $swoole;
 
     /**
      * Response constructor.
@@ -83,7 +83,7 @@ class Response extends UtopiaResponse
         $this->swoole->cookie(
             name: $name,
             value: $value,
-            expire: $options['expire'] ?? 0,
+            expires: $options['expire'] ?? 0,
             path: $options['path'] ?? '',
             domain: $options['domain'] ?? '',
             secure: $options['secure'] ?? false,
