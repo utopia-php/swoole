@@ -83,7 +83,7 @@ class Response extends UtopiaResponse
         $this->swoole->cookie(
             name: $name,
             value: $value,
-            expires: $options['expire'] ?? 0,
+            expire: $options['expire'] ?? 0,
             path: $options['path'] ?? '',
             domain: $options['domain'] ?? '',
             secure: $options['secure'] ?? false,
