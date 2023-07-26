@@ -92,6 +92,13 @@ App::get('/protocol')
         $response->send($request->getProtocol());
     });
 
+App::get('/cookie')
+    ->inject('response')
+    ->action(function (Response $response) {
+        $response->addCookie('new-cookie', 'session-secret', \time(), '/', 'domain.com', true, true, null);
+        $response->send('Hello with cookie!');
+    });
+
 $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swooleResponse) {
     $request = new Request($swooleRequest);
     $response = new Response($swooleResponse);

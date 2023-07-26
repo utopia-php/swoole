@@ -31,6 +31,13 @@ class ResponseTest extends TestCase
         $this->assertEquals('Hello World!', $response['body']);
     }
 
+    public function testResponseWithCookie(): void
+    {
+        $response = $this->client->call(Client::METHOD_GET, '/cookie');
+        $this->assertNotEmpty($response['headers']['set-cookie']);
+        $this->assertEquals('Hello with cookie!', $response['body']);
+    }
+
     public function testCanRespondWithRedirect(): void
     {
         $response = $this->client->call(Client::METHOD_GET, '/redirect');
