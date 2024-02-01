@@ -17,7 +17,7 @@ class Response extends UtopiaResponse
 
     /**
      * Status Code Reason
-     * 
+     *
      * @var string
      */
     protected string $reason = '';
@@ -116,7 +116,7 @@ class Response extends UtopiaResponse
     /**
      * @var array
      */
-    protected $statusCodes = [
+    protected array $statusCodes = [
         self::STATUS_CODE_CONTINUE => 'Continue',
         self::STATUS_CODE_SWITCHING_PROTOCOLS => 'Switching Protocols',
         self::STATUS_CODE_OK => 'OK',
