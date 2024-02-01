@@ -114,9 +114,9 @@ class Response extends UtopiaResponse
     public const STATUS_CODE_HTTP_VERSION_NOT_SUPPORTED = 505;
 
     /**
-     * @var array
+     * @var array<int, string> $statusCodes
      */
-    protected array $statusCodes = [
+    protected $statusCodes = [
         self::STATUS_CODE_CONTINUE => 'Continue',
         self::STATUS_CODE_SWITCHING_PROTOCOLS => 'Switching Protocols',
         self::STATUS_CODE_OK => 'OK',
@@ -132,7 +132,7 @@ class Response extends UtopiaResponse
         self::STATUS_CODE_SEE_OTHER => 'See Other',
         self::STATUS_CODE_NOT_MODIFIED => 'Not Modified',
         self::STATUS_CODE_USE_PROXY => 'Use Proxy',
-        self::STATUS_CODE_UNUSED => '(Unused)',
+        self::STATUS_CODE_UNUSED => 'Unused',
         self::STATUS_CODE_TEMPORARY_REDIRECT => 'Temporary Redirect',
         self::STATUS_CODE_BAD_REQUEST => 'Bad Request',
         self::STATUS_CODE_UNAUTHORIZED => 'Unauthorized',
