@@ -2,7 +2,6 @@
 
 namespace Utopia\Swoole;
 
-use DateMalformedPeriodStringException;
 use Exception;
 use Swoole\Http\Response as SwooleResponse;
 use Utopia\Response as UtopiaResponse;
