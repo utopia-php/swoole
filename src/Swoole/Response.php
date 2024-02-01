@@ -16,13 +16,6 @@ class Response extends UtopiaResponse
     protected SwooleResponse $swoole;
 
     /**
-     * Status Code Reason
-     *
-     * @var string
-     */
-    protected string $reason = '';
-
-    /**
      * HTTP response status codes
      */
     public const STATUS_CODE_CONTINUE = 100;
@@ -195,15 +188,15 @@ class Response extends UtopiaResponse
     }
 
     /**
-     * Set status code reason
+     * Get status code reason
      *
-     * Set HTTP response status code reason between available options. If status code is unknown an exception will be thrown.
+     * Get HTTP response status code reason from available options. If status code is unknown an exception will be thrown.
      *
      * @param  int  $code
      *
      * @throws Exception
      */
-    protected function setStatusCodeReason(int $code): static
+    protected function getStatusCodeReason(int $code): static
     {
         if (!\array_key_exists($code, $this->statusCodes)) {
             throw new Exception('Unknown HTTP status code');
@@ -222,8 +215,7 @@ class Response extends UtopiaResponse
      */
     protected function sendStatus(int $statusCode): void
     {
-        $this->setStatusCodeReason($statusCode);
-        $this->swoole->status((string) $statusCode, $this->reason);
+        $this->swoole->status((string) $statusCode, $this->getStatusCodeReason($statusCode));
     }
 
     /**
