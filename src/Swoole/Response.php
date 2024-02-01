@@ -2,6 +2,7 @@
 
 namespace Utopia\Swoole;
 
+use DateMalformedPeriodStringException;
 use Exception;
 use Swoole\Http\Response as SwooleResponse;
 use Utopia\Response as UtopiaResponse;
@@ -193,18 +194,17 @@ class Response extends UtopiaResponse
      * Get HTTP response status code reason from available options. If status code is unknown an exception will be thrown.
      *
      * @param  int  $code
+     * @return string
      *
      * @throws Exception
      */
-    protected function getStatusCodeReason(int $code): static
+    protected function getStatusCodeReason(int $code): string
     {
         if (!\array_key_exists($code, $this->statusCodes)) {
             throw new Exception('Unknown HTTP status code');
         }
 
-        $this->reason = $this->statusCodes[$code];
-
-        return $this;
+        return $this->statusCodes[$code];
     }
 
     /**
