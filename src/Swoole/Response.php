@@ -52,6 +52,8 @@ class Response extends UtopiaResponse
 
     public const STATUS_CODE_TEMPORARY_REDIRECT = 307;
 
+    public const STATUS_CODE_PERMANENT_REDIRECT = 308;
+
     public const STATUS_CODE_BAD_REQUEST = 400;
 
     public const STATUS_CODE_UNAUTHORIZED = 401;
@@ -127,6 +129,7 @@ class Response extends UtopiaResponse
         self::STATUS_CODE_USE_PROXY => 'Use Proxy',
         self::STATUS_CODE_UNUSED => 'Unused',
         self::STATUS_CODE_TEMPORARY_REDIRECT => 'Temporary Redirect',
+        self::STATUS_CODE_PERMANENT_REDIRECT => 'Permanent Redirect',
         self::STATUS_CODE_BAD_REQUEST => 'Bad Request',
         self::STATUS_CODE_UNAUTHORIZED => 'Unauthorized',
         self::STATUS_CODE_PAYMENT_REQUIRED => 'Payment Required',
