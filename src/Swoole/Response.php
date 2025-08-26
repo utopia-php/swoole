@@ -245,7 +245,7 @@ class Response extends UtopiaResponse
     protected function sendCookie(string $name, string $value, array $options): void
     {
         $this->swoole->cookie(
-            name: $name,
+            name_or_object: $name,
             value: $value,
             expires: $options['expire'] ?? 0,
             path: $options['path'] ?? '',
