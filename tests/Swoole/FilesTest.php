@@ -49,8 +49,8 @@ class FilesTest extends TestCase
     {
         $this->assertEquals('application/vnd.ms-fontobject', Files::getFileMimeType('/fonts/poppins-v9-latin-100.eot'));
         $this->assertEquals('image/svg+xml', Files::getFileMimeType('/fonts/poppins-v9-latin-100.svg'));
-        $this->assertEquals('application/octet-stream', Files::getFileMimeType('/fonts/poppins-v9-latin-100.woff'));
-        $this->assertEquals('application/octet-stream', Files::getFileMimeType('/fonts/poppins-v9-latin-100.woff2'));
+        $this->assertEquals('font/woff', Files::getFileMimeType('/fonts/poppins-v9-latin-100.woff'));
+        $this->assertEquals('font/woff2', Files::getFileMimeType('/fonts/poppins-v9-latin-100.woff2'));
         $this->assertEquals('image/png', Files::getFileMimeType('/images/logo.png'));
         $this->assertEquals('text/javascript', Files::getFileMimeType('/dist/scripts/app.js'));
         $this->assertEquals('text/javascript', Files::getFileMimeType('/dist/scripts/app.js'));
