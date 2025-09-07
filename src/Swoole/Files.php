@@ -83,7 +83,7 @@ class Files
      *
      * @throws \Exception
      */
-    public static function load(string $directory, string $root = null): void
+    public static function load(string $directory, ?string $root = null): void
     {
         if (! is_readable($directory)) {
             throw new Exception("Failed to load directory: {$directory}");

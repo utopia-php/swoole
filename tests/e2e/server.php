@@ -67,13 +67,6 @@ App::get('/headers')
         $response->json(['headers' => $request->getHeaders()]);
     });
 
-App::get('/cookies')
-    ->inject('request')
-    ->inject('response')
-    ->action(function (Request $request, Response $response) {
-        $response->send($request->getHeaders()['cookie'] ?? '');
-    });
-
 App::get('/set-cookie')
     ->inject('request')
     ->inject('response')

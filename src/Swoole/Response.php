@@ -185,7 +185,7 @@ class Response extends UtopiaResponse
      * @param  string|null  $content
      * @return void
      */
-    protected function end(string $content = null): void
+    protected function end(?string $content = null): void
     {
         $this->swoole->end($content);
     }
