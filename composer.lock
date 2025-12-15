@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f72fec6df1ca8c4970751a9d55f200e2",
+    "content-hash": "0e587eb21ddbe26cb064a7e9662753fc",
     "packages": [
         {
             "name": "brick/math",
@@ -1942,28 +1942,29 @@
         },
         {
             "name": "utopia-php/framework",
-            "version": "0.33.x-dev",
+            "version": "0.33.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/utopia-php/http.git",
-                "reference": "70ecf88aa4035229482385efc5f8c2f354a29acd"
+                "reference": "82b139fb04f30045db51b0d322224f222da32313"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/http/zipball/70ecf88aa4035229482385efc5f8c2f354a29acd",
-                "reference": "70ecf88aa4035229482385efc5f8c2f354a29acd",
+                "url": "https://api.github.com/repos/utopia-php/http/zipball/82b139fb04f30045db51b0d322224f222da32313",
+                "reference": "82b139fb04f30045db51b0d322224f222da32313",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1",
+                "php": ">=8.3",
                 "utopia-php/compression": "0.1.*",
-                "utopia-php/telemetry": "0.1.*"
+                "utopia-php/telemetry": "0.1.*",
+                "utopia-php/validators": "0.1.*"
             },
             "require-dev": {
-                "laravel/pint": "^1.2",
-                "phpbench/phpbench": "^1.2",
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^9.5.25"
+                "laravel/pint": "1.*",
+                "phpbench/phpbench": "1.*",
+                "phpstan/phpstan": "1.*",
+                "phpunit/phpunit": "9.*"
             },
             "type": "library",
             "autoload": {
@@ -1983,9 +1984,9 @@
             ],
             "support": {
                 "issues": "https://github.com/utopia-php/http/issues",
-                "source": "https://github.com/utopia-php/http/tree/0.33.25"
+                "source": "https://github.com/utopia-php/http/tree/0.33.35"
             },
-            "time": "2025-09-07T09:03:11+00:00"
+            "time": "2025-12-12T08:33:52+00:00"
         },
         {
             "name": "utopia-php/telemetry",
@@ -2036,6 +2037,51 @@
                 "source": "https://github.com/utopia-php/telemetry/tree/0.1.1"
             },
             "time": "2025-03-17T11:57:52+00:00"
+        },
+        {
+            "name": "utopia-php/validators",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/utopia-php/validators.git",
+                "reference": "5c57d5b6cf964f8981807c1d3ea8df620c869080"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/utopia-php/validators/zipball/5c57d5b6cf964f8981807c1d3ea8df620c869080",
+                "reference": "5c57d5b6cf964f8981807c1d3ea8df620c869080",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "laravel/pint": "1.*",
+                "phpstan/phpstan": "1.*",
+                "phpunit/phpunit": "11.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Utopia\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A lightweight collection of reusable validators for Utopia projects",
+            "keywords": [
+                "php",
+                "utopia",
+                "validation",
+                "validator"
+            ],
+            "support": {
+                "issues": "https://github.com/utopia-php/validators/issues",
+                "source": "https://github.com/utopia-php/validators/tree/0.1.0"
+            },
+            "time": "2025-11-18T11:05:46+00:00"
         }
     ],
     "packages-dev": [
@@ -3987,13 +4033,13 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.0",
         "ext-swoole": "*"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
