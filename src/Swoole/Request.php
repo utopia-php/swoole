@@ -17,7 +17,7 @@ class Request extends UtopiaRequest
     /**
      * List of trusted proxy header names to check for client IP address
      *
-     * @var array
+     * @var array<string>
      */
     protected array $trustedIpHeaders = [];
 
@@ -77,7 +77,7 @@ class Request extends UtopiaRequest
      * WARNING: Only set these headers if your application is behind a trusted proxy.
      * Trusting these headers when accepting direct client connections is a security risk.
      *
-     * @param array $headers List of header names to trust (e.g., ['x-forwarded-for', 'x-real-ip'])
+     * @param array<string> $headers List of header names to trust (e.g., ['x-forwarded-for', 'x-real-ip'])
      * @return static
      */
     public function setTrustedIpHeaders(array $headers): static
