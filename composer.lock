@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e587eb21ddbe26cb064a7e9662753fc",
+    "content-hash": "db5cc64b069f9e30185d4d074282deea",
     "packages": [
         {
             "name": "brick/math",
@@ -1942,16 +1942,16 @@
         },
         {
             "name": "utopia-php/framework",
-            "version": "0.33.35",
+            "version": "0.33.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/utopia-php/http.git",
-                "reference": "82b139fb04f30045db51b0d322224f222da32313"
+                "reference": "fd835ed77e1cdf327067ce4e650cce86304e7098"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/utopia-php/http/zipball/82b139fb04f30045db51b0d322224f222da32313",
-                "reference": "82b139fb04f30045db51b0d322224f222da32313",
+                "url": "https://api.github.com/repos/utopia-php/http/zipball/fd835ed77e1cdf327067ce4e650cce86304e7098",
+                "reference": "fd835ed77e1cdf327067ce4e650cce86304e7098",
                 "shasum": ""
             },
             "require": {
@@ -1984,9 +1984,9 @@
             ],
             "support": {
                 "issues": "https://github.com/utopia-php/http/issues",
-                "source": "https://github.com/utopia-php/http/tree/0.33.35"
+                "source": "https://github.com/utopia-php/http/tree/0.33.36"
             },
-            "time": "2025-12-12T08:33:52+00:00"
+            "time": "2026-01-12T07:32:29+00:00"
         },
         {
             "name": "utopia-php/telemetry",
@@ -4041,5 +4041,5 @@
         "ext-swoole": "*"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }
