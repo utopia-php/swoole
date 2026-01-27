@@ -15,7 +15,7 @@
     "require": {
         "php": ">=8.0",
         "ext-swoole": "6.*",
-        "utopia-php/framework": "0.33.*"
+        "utopia-php/framework": "0.33.37"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.3",
@@ -23,5 +23,11 @@
         "laravel/pint": "1.2.*",
         "phpstan/phpstan": "^1.10"
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "tbachert/spi": true
+        }
+    }
 }

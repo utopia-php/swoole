@@ -67,6 +67,15 @@ App::get('/headers')
         $response->json(['headers' => $request->getHeaders()]);
     });
 
+App::get('/set-cookie')
+    ->inject('request')
+    ->inject('response')
+    ->action(function (Request $request, Response $response) {
+        $response->addHeader('Set-Cookie', 'key1=value1', override: false);
+        $response->addHeader('Set-Cookie', 'key2=value2', override: false);
+        $response->send('OK');
+    });
+
 App::get('/chunked')
     ->inject('response')
     ->action(function ($response) {

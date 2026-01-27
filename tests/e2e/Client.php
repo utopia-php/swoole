@@ -60,6 +60,8 @@ class Client
         $responseType = '';
         $responseBody = '';
 
+        $cookies = [];
+
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -67,12 +69,18 @@ class Client
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
         curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-        curl_setopt($ch, CURLOPT_HEADERFUNCTION, function ($curl, $header) use (&$responseHeaders) {
+        curl_setopt($ch, CURLOPT_HEADERFUNCTION, function ($curl, $header) use (&$responseHeaders, &$cookies) {
             $len = strlen($header);
             $header = explode(':', $header, 2);
 
             if (count($header) < 2) { // ignore invalid headers
                 return $len;
+            }
+
+            if (strtolower(trim($header[0])) == 'set-cookie') {
+                $parsed = $this->parseCookie((string)trim($header[1]));
+                $name = array_key_first($parsed);
+                $cookies[$name] = $parsed[$name];
             }
 
             $responseHeaders[strtolower(trim($header[0]))] = trim($header[1]);
@@ -98,6 +106,22 @@ class Client
         return [
             'headers' => $responseHeaders,
             'body' => $responseBody,
+            'cookies' => $cookies,
         ];
+    }
+
+    /**
+    * Parse Cookie String
+    *
+    * @param string $cookie
+    * @return array<string, string>
+    */
+    public function parseCookie(string $cookie): array
+    {
+        $cookies = [];
+
+        parse_str(strtr($cookie, ['&' => '%26', '+' => '%2B', ';' => '&']), $cookies);
+
+        return $cookies;
     }
 }

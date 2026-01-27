@@ -185,7 +185,7 @@ class Response extends UtopiaResponse
      * @param  string|null  $content
      * @return void
      */
-    protected function end(string $content = null): void
+    protected function end(?string $content = null): void
     {
         $this->swoole->end($content);
     }
@@ -224,12 +224,12 @@ class Response extends UtopiaResponse
      * Send Header
      *
      * @param  string  $key
-     * @param  string  $value
+     * @param  string|array<string>  $values
      * @return void
      */
-    protected function sendHeader(string $key, string $value): void
+    protected function sendHeader(string $key, mixed $values): void
     {
-        $this->swoole->header($key, $value);
+        $this->swoole->header($key, $values);
     }
 
     /**
