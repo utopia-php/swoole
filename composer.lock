@@ -2270,7 +2270,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.x"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.13.4"
             },
             "funding": [
                 {
@@ -3967,16 +3967,16 @@
         },
         {
             "name": "swoole/ide-helper",
-            "version": "5.0.2",
+            "version": "6.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swoole/ide-helper.git",
-                "reference": "16cfee44a6ec92254228c39bcab2fb8ae74cc2ea"
+                "reference": "6f12243dce071714c5febe059578d909698f9a52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/16cfee44a6ec92254228c39bcab2fb8ae74cc2ea",
-                "reference": "16cfee44a6ec92254228c39bcab2fb8ae74cc2ea",
+                "url": "https://api.github.com/repos/swoole/ide-helper/zipball/6f12243dce071714c5febe059578d909698f9a52",
+                "reference": "6f12243dce071714c5febe059578d909698f9a52",
                 "shasum": ""
             },
             "type": "library",
@@ -3993,9 +3993,9 @@
             "description": "IDE help files for Swoole.",
             "support": {
                 "issues": "https://github.com/swoole/ide-helper/issues",
-                "source": "https://github.com/swoole/ide-helper/tree/5.0.2"
+                "source": "https://github.com/swoole/ide-helper/tree/6.0.2"
             },
-            "time": "2023-03-20T06:05:55+00:00"
+            "time": "2025-03-23T07:31:41+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -4055,7 +4055,7 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.0",
-        "ext-swoole": "*"
+        "ext-swoole": "6.*"
     },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"
