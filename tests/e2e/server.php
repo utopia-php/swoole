@@ -6,7 +6,7 @@ use Swoole\Http\Request as SwooleRequest;
 use Swoole\Http\Response as SwooleResponse;
 use Swoole\Http\Server;
 use Swoole\Process;
-use Utopia\App;
+use Utopia\Http;
 use Utopia\Swoole\Request;
 use Utopia\Swoole\Response;
 
@@ -16,9 +16,9 @@ ini_set('display_startup_errors', 1);
 ini_set('display_socket_timeout', -1);
 error_reporting(E_ALL);
 
-$http = new Server('0.0.0.0', App::getENV('PORT', '80'));
+$http = new Server('0.0.0.0', Http::getENV('PORT', '80'));
 
-$payloadSize = max('4000000'/* 4mb */, App::getEnv('_APP_STORAGE_LIMIT', '10000000'/* 10mb */));
+$payloadSize = max('4000000'/* 4mb */, Http::getEnv('_APP_STORAGE_LIMIT', '10000000'/* 10mb */));
 
 $http
     ->set([
@@ -54,20 +54,20 @@ $http->on('start', function (Server $http) use ($payloadSize) {
     });
 });
 
-App::get('/')
+Http::get('/')
     ->inject('response')
     ->action(function ($response) {
         $response->send('Hello World!');
     });
 
-App::get('/headers')
+Http::get('/headers')
     ->inject('request')
     ->inject('response')
     ->action(function ($request, $response) {
         $response->json(['headers' => $request->getHeaders()]);
     });
 
-App::get('/set-cookie')
+Http::get('/set-cookie')
     ->inject('request')
     ->inject('response')
     ->action(function (Request $request, Response $response) {
@@ -76,7 +76,7 @@ App::get('/set-cookie')
         $response->send('OK');
     });
 
-App::get('/chunked')
+Http::get('/chunked')
     ->inject('response')
     ->action(function ($response) {
         // /** @var Utopia/Swoole/Response $response */
@@ -85,14 +85,14 @@ App::get('/chunked')
         }
     });
 
-App::get('/redirect')
+Http::get('/redirect')
     ->inject('response')
     ->action(function ($response) {
         // /** @var Utopia/Swoole/Response $response */
         $response->redirect('/');
     });
 
-App::get('/protocol')
+Http::get('/protocol')
     ->inject('request')
     ->inject('response')
     ->action(function ($request, $response) {
@@ -101,7 +101,7 @@ App::get('/protocol')
         $response->send($request->getProtocol());
     });
 
-App::get('/cookie')
+Http::get('/cookie')
     ->inject('response')
     ->action(function (Response $response) {
         $response->addCookie('new-cookie', 'session-secret', \time(), '/', 'domain.com', true, true, null);
@@ -112,7 +112,7 @@ $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swo
     $request = new Request($swooleRequest);
     $response = new Response($swooleResponse);
 
-    $app = new App('UTC');
+    $app = new Http('UTC');
 
     try {
         $app->run($request, $response);
@@ -122,7 +122,7 @@ $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swo
         echo '[Error] File: '.$th->getFile();
         echo '[Error] Line: '.$th->getLine();
 
-        if (App::isDevelopment()) {
+        if (Http::isDevelopment()) {
             $swooleResponse->end('error: '.$th->getMessage());
         } else {
             $swooleResponse->end('500: Server Error');

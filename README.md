@@ -22,7 +22,7 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
     require __DIR__.'/../vendor/autoload.php';
 }
 
-use Utopia\App;
+use Utopia\Http;
 use Utopia\Swoole\Request;
 use Utopia\Swoole\Response;
 use Utopia\Swoole\Files;
